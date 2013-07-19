@@ -1,18 +1,17 @@
 <html>
 	<head>
-		<style type="text/css">
-			body {
-				background-color: #FF0000;
-			}
-		</style>
 		<title>Guess My Number</title>
+        
+        <link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		<h1>Hola Mundo!</h1>
+		<h1>Paso 1 - Ingresar datos del servidor</h1>
 		<form>
-			<label>Mi Campo:</label><input value="contenido" />
+			<label>Servidor:</label><input id="txtServer" value="" />
 			<br />
-			<input type="button" value="Guardar" />
+            <label>Puerto:</label><input id="txtPort" value="" />
+			<br />
+			<input id="btnSave" type="button" value="Guardar" />
 		</form>
 	</body>
 </html>

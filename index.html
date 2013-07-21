@@ -1,17 +1,48 @@
-<html>
+ <!DOCTYPE html>
+ <html>
 	<head>
 		<title>Guess My Number</title>
         
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
+        <meta name="keywords" content="Guess, Number, Game, Adivinar, Juego, Numero">
+        <meta name="description" content="A game to guess numbers">
+        <meta name="author" content="Gomez Pablo Matias">
+        <!-- <meta http-equiv="refresh" content="30"> --> 
 	</head>
 	<body>
-		<h1>Paso 1 - Ingresar datos del servidor</h1>
-		<form>
-			<label>Servidor:</label><input id="txtServer" value="" />
-			<br />
-            <label>Puerto:</label><input id="txtPort" value="" />
-			<br />
-			<input id="btnSave" type="button" value="Guardar" />
-		</form>
+        <!-- Formulario correspondiente al primer paso (ingresar los datos para realizar una conexion al servidor) --> 
+        <div class="initForm">
+    		<h2>Ingresar datos del servidor</h2>
+    		<form id="frmServer">
+    			<label>Servidor:</label><input id="txtServer" type="text" title="Ingrese aqu&iacute; la direcci&oacute;n de IP correspondiente al servidor a conectarse" value="" />
+    			<br />
+                <label>Puerto:</label><input id="txtPort" type="text" title="Ingrese aqu&iacute; el puerto correspondiente al servidor a conectarse" value="" />
+    			<br />
+    			<input id="btnServer_Save" type="submit" value="Guardar" />
+    		</form>
+        </div>
+
+        
+        <!-- Formulario correspondiente al segundo paso (ingresar nombre de usuario) --> 
+        <div class="initForm">
+    		<h2>Ingresar nombre de usuario</h2>
+    		<form id="frmUser">
+    			<label>Usuario:</label><input id="txtUser" type="text" title="Ingrese aqu&iacute; el nombre de usuario a utilizar" value="" />
+    			<br />
+    			<input id="btnUser_Save" type="submit" value="Guardar" />
+    		</form>
+        </div>
+        
+        
+        <!-- Formulario correspondiente al tercer paso (ingresar numero) --> 
+		<div class="initForm">
+            <h2>Ingresar el n&uacute;mero a utilizar</h2>
+    		<form id="frmNumber">
+    			<label>N&uacute;mero:</label><input id="txtNumber" type="text" title="Ingrese aqu&iacute; el n&uacute;mero a elegir" value="" />
+    			<br />
+    			<input id="btnNumber_Save" type="submit" value="Guardar" />
+    		</form>
+        </div>
 	</body>
 </html>

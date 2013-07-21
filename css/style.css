@@ -1,7 +1,36 @@
 
+body {
+    font-family: Tahoma;
+}
 
-h1 {
+h2 {
     font-size: 16px;
+}
+
+.initForm form {
+    width: 300px;
+    border: 1px solid;
+    margin: 10px;
+    padding: 10px;
+    background-color: #DDDDDD;
+}
+
+.initForm label {
+    margin: 3px 0;
+}
+
+.initForm input[type="text"]
+{
+    margin: 3px;
+    padding: 3px;
+    display: inline;
+    width: 98%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.initForm {
+    margin:  0 0 50px;
     
     
 }

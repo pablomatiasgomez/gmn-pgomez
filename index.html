@@ -2,47 +2,150 @@
  <html>
 	<head>
 		<title>Guess My Number</title>
+        <link rel="icon" type="image/png" href="images/favicon.png" />
         
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         
         <meta name="keywords" content="Guess, Number, Game, Adivinar, Juego, Numero">
         <meta name="description" content="A game to guess numbers">
         <meta name="author" content="Gomez Pablo Matias">
+        <meta charset="UTF-8">
         <!-- <meta http-equiv="refresh" content="30"> --> 
 	</head>
 	<body>
-        <!-- Formulario correspondiente al primer paso (ingresar los datos para realizar una conexion al servidor) --> 
-        <div class="initForm">
-    		<h2>Ingresar datos del servidor</h2>
-    		<form id="frmServer">
-    			<label>Servidor:</label><input id="txtServer" type="text" title="Ingrese aqu&iacute; la direcci&oacute;n de IP correspondiente al servidor a conectarse" value="" />
-    			<br />
-                <label>Puerto:</label><input id="txtPort" type="text" title="Ingrese aqu&iacute; el puerto correspondiente al servidor a conectarse" value="" />
-    			<br />
-    			<input id="btnServer_Save" type="submit" value="Guardar" />
-    		</form>
-        </div>
-
-        
-        <!-- Formulario correspondiente al segundo paso (ingresar nombre de usuario) --> 
-        <div class="initForm">
-    		<h2>Ingresar nombre de usuario</h2>
-    		<form id="frmUser">
-    			<label>Usuario:</label><input id="txtUser" type="text" title="Ingrese aqu&iacute; el nombre de usuario a utilizar" value="" />
-    			<br />
-    			<input id="btnUser_Save" type="submit" value="Guardar" />
-    		</form>
-        </div>
-        
-        
-        <!-- Formulario correspondiente al tercer paso (ingresar numero) --> 
-		<div class="initForm">
-            <h2>Ingresar el n&uacute;mero a utilizar</h2>
-    		<form id="frmNumber">
-    			<label>N&uacute;mero:</label><input id="txtNumber" type="text" title="Ingrese aqu&iacute; el n&uacute;mero a elegir" value="" />
-    			<br />
-    			<input id="btnNumber_Save" type="submit" value="Guardar" />
-    		</form>
+        <div id="container">
+            <a href="#divMain">Ir al main</a>
+            <h1 align="center">Guess My Number</h1>
+            <!-- Formulario correspondiente al primer paso (ingresar los datos para realizar una conexion al servidor) --> 
+            <div id="divServer" class="initForm">
+        		<h2>Ingresar datos del servidor</h2>
+        		<form id="frmServer">
+        			<label for="txtServer">Servidor:</label><input id="txtServer" type="text" title="Ingrese aqu&iacute; la direcci&oacute;n de IP correspondiente al servidor a conectarse" value="" />
+        			<br />
+                    <label for="txtPort">Puerto:</label><input id="txtPort" type="text" title="Ingrese aqu&iacute; el puerto correspondiente al servidor a conectarse" value="" />
+        			<br />
+        			<input id="btnServer_Save" type="submit" value="Guardar" />
+        		</form>
+            </div>
+    
+            
+            <!-- Formulario correspondiente al segundo paso (ingresar nombre de usuario) --> 
+            <div id="divUser" class="initForm">
+        		<h2>Ingresar nombre de usuario</h2>
+        		<form id="frmUser">
+        			<label for="txtUser">Usuario:</label><input id="txtUser" type="text" title="Ingrese aqu&iacute; el nombre de usuario a utilizar" value="" />
+        			<br />
+        			<input id="btnUser_Save" type="submit" value="Guardar" />
+        		</form>
+            </div>
+            
+            
+            <!-- Formulario correspondiente al tercer paso (ingresar numero) --> 
+    		<div id="divNumber" class="initForm">
+                <h2>Ingresar el n&uacute;mero a utilizar</h2>
+        		<form id="frmNumber">
+        			<label for="txtNumber">N&uacute;mero:</label><input id="txtNumber" type="text" title="Ingrese aqu&iacute; el n&uacute;mero a elegir" value="" />
+        			<br />
+        			<input id="btnNumber_Save" type="submit" value="Guardar" />
+        		</form>
+            </div>
+            
+            <div id="divMain">
+                <h2>Contrincante</h2>
+                <div id="divOponent">
+                    <label>Usuario 15</label>
+                    <hr />
+                    
+                    <h3>Adivinar n&uacute;mero</h3>
+                    <form id="frmGuessNumber">
+                        <label for="txtNumber">N&uacute;mero:</label><input id="txtNumber" type="text" title="Ingrese el numero a adivinar" maxlength="4" value="" />
+                        <input type="submit" value="Adivinar" />
+                    </form>
+                    <hr />
+                    
+                    <h3>Intentos realizados</h3>
+                    <table id="tblAttemps">
+                        <thead>
+                            <tr>
+                                <th>N&uacute;mero</th>
+                                <th>Correctos</th>
+                                <th>Acertados</th>
+                                <th>Err&oacute;neos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1111</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="divPlayers">
+                    <h2>Lista de jugadores</h2>
+                    <table id="tblPlayers">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th width="75px">Jugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Usuario 1</td>
+                                <td><input type="button" value="Jugar" /></td>
+                            </tr>
+                            <tr>
+                                <td>Usuario 2</td>
+                                <td><input type="button" value="Jugar" /></td>
+                            </tr>
+                            <tr>
+                                <td>Usuario 3</td>
+                                <td><input type="button" value="Jugar" /></td>
+                            </tr>
+                            <tr>
+                                <td>Usuario 4</td>
+                                <td><input type="button" value="Jugar" /></td>
+                            </tr>
+                            <tr>
+                                <td>Usuario 5</td>
+                                <td><input type="button" value="Jugar" /></td>
+                            </tr>
+                            <tr>
+                                <td>Usuario 6</td>
+                                <td><input type="button" value="Jugar" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 	</body>
 </html>

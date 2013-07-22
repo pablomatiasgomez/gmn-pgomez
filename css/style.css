@@ -1,36 +1,118 @@
 
 body {
     font-family: Tahoma;
+    /*background-color: #F5F6CE;*/
+    background-image: url("../images/background-pattern.png");
 }
 
 h2 {
-    font-size: 16px;
+    font-size: 18px;
 }
 
-.initForm form {
-    width: 300px;
-    border: 1px solid;
-    margin: 10px;
-    padding: 10px;
-    background-color: #DDDDDD;
+h3 {
+    font-size: 14px;
 }
 
-.initForm label {
+label {
     margin: 3px 0;
+    font-size: 14px;
+}
+        
+#container {
+    margin:  0 auto;
+    width: 1000px;
+    height: auto;
+    padding: 10px 20px;
 }
 
-.initForm input[type="text"]
-{
-    margin: 3px;
-    padding: 3px;
-    display: inline;
-    width: 98%;
-    border: 1px solid black;
-    border-radius: 5px;
-}
+    .initForm {
+        margin:  80px auto;
+        width: 345px;
+        
+    }
+        .initForm form {
+            border: 1.5px dashed;
+            margin: 10px;
+            padding: 10px;
+            background-color: #DDDDDD;
+            overflow: auto;
+            border-radius: 5px;
+        }
+    
+        .initForm input[type="text"]
+        {
+            margin: 3px;
+            padding: 3px 10px;
+            width: 275px;
+            border: 1px solid black;
+            border-radius: 50px 5px;
+            font-style: italic;
+        }
+        
+        .initForm input[type="submit"]
+        {
+            float: right;
+        }
 
-.initForm {
-    margin:  0 0 50px;
+
+
+#divMain {
+    margin: 50px;
+    overflow: hidden;
+} 
+
+    #divOponent {
+        float: left;
+        width: 330px;
+        margin-bottom: 700px;
+        border-radius: 5px;
+        border: 2px dashed;
+        padding: 15px;
+    }
     
-    
-}
+        #divOponent form {
+            border: 1.5px dashed;
+            margin: 10px;
+            padding: 10px;
+            background-color: #DDDDDD;
+            overflow: auto;
+            border-radius: 10px;
+        }
+        
+        #divOponent input[type="text"]
+        {
+            margin: 3px;
+            padding: 3px;
+            border: 1px solid black;
+            width: 110px;
+        }
+        
+        #tblAttemps {
+            border-collapse:collapse;
+            border: 1px solid black;
+            width: 100%;
+            background-color: #EEEEEE;
+            margin: 5px;
+            padding: 5px;
+            font-size: 14px;
+        }
+            #tblAttemps td, #tblAttemps th{
+                border: 1px solid black;
+                text-align: center;
+            }
+        
+    #divPlayers {
+        float: right;
+        width: 350px;
+    }
+        #tblPlayers   {
+            border-collapse: collapse;
+            border: 2px dashed;
+            width: 100%;
+            background-color: #EEEEEE;
+            border-radius: 10px;
+        }
+            #tblPlayers td, #tblPlayers th{
+                border: 1px solid black;
+                text-align: center;
+            }

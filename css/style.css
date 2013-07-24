@@ -5,6 +5,10 @@ body {
     background-image: url("../images/background-pattern.png");
 }
 
+h1 {
+    text-align: center;
+}
+
 h2 {
     font-size: 18px;
 }
@@ -28,13 +32,13 @@ label {
     .initForm {
         margin:  80px auto;
         width: 345px;
-        
+        display: none;
     }
         .initForm form {
             border: 1.5px dashed;
             margin: 10px;
             padding: 10px;
-            background-color: #DDDDDD;
+            background-color: #C8E6B4;
             overflow: auto;
             border-radius: 5px;
         }
@@ -49,7 +53,7 @@ label {
             font-style: italic;
         }
         
-        .initForm input[type="submit"]
+        .initForm input[type="button"]
         {
             float: right;
         }
@@ -59,6 +63,7 @@ label {
 #divMain {
     margin: 50px;
     overflow: hidden;
+    display: none;
 } 
 
     #divOponent {
@@ -74,7 +79,7 @@ label {
             border: 1.5px dashed;
             margin: 10px;
             padding: 10px;
-            background-color: #DDDDDD;
+            background-color: #C8E6B4;
             overflow: auto;
             border-radius: 10px;
         }
@@ -91,7 +96,7 @@ label {
             border-collapse:collapse;
             border: 1px solid black;
             width: 100%;
-            background-color: #EEEEEE;
+            background-color: #C8E6B4;
             margin: 5px;
             padding: 5px;
             font-size: 14px;
@@ -109,7 +114,7 @@ label {
             border-collapse: collapse;
             border: 2px dashed;
             width: 100%;
-            background-color: #EEEEEE;
+            background-color: #C8E6B4;
             border-radius: 10px;
         }
             #tblPlayers td, #tblPlayers th{

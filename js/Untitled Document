@@ -1,1 +1,0 @@
-if (parseInt(serverpor.value, 10) == serverport.value)

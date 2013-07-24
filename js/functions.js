@@ -20,17 +20,25 @@
 $(document).ready(function() { $("#divServer").show(); });
 
 $(function(){ //ready function 
-
+    
+    
     $(".initForm input[type='text']").keyup(function (event) { $($($(this).parent()).find("input[type='button']")).click();  });
     
     $("#btnServer_Save").click(function (){
-        alert($.md5("1234"));
+        /*for(x=10000000000000; x <= 99999999999999999; x++){
+            if ($.md5(1234 + x) == "cd579ee4ac1487196859e3799a0c9861")
+                alert (x);
+            if ((x % 10000000) == 0)
+                console.log((x-10000000000000) * 100 / 9989999999999999);
+        }
+
+        
 //  10000000000000
 //  99999999999999999
 //0.77453316655009981
 
 
-        return;
+        return;*/
         flag = true;
         if (parseInt($("#txtPort").val(), 10) != $("#txtPort").val()) {
             validateControl($("#txtPort"), false);
@@ -40,8 +48,13 @@ $(function(){ //ready function
             validateControl($("#txtServer"), false);
             flag = false;
         } else validateControl($("#txtServer"), true);
+        if (flag) 
+            $("#frmServer").animate({ borderColor: '#00FF00'}, 300 );
+        else
+            $("#frmServer").animate({ borderColor: '#FF0000'}, 300 );
+            
         if (flag && event.keyCode === 13){
-            $("#divServer").fadeOut(500, function(){ $("#divUser").fadeIn(500, function(){ $("#txtUser").focus() })});
+            $("#divServer").fadeOut(500, function(){ $("#divUser").fadeIn(500, function(){ $("#txtUser").focus(); })});
         }
     });
     
@@ -51,7 +64,7 @@ $(function(){ //ready function
         if (($("#txtUser").val()).length < 1)
             validateControl($("#txtUser"), false);
         else 
-            if (event.keyCode === 13) $("#divUser").fadeOut(500, function(){ $("#divNumber").fadeIn(500, function(){ $("#txtNumber").focus() })});
+            if (event.keyCode === 13) $("#divUser").fadeOut(500, function(){ $("#divNumber").fadeIn(500, function(){ $("#txtNumber").focus(); })});
    
     });
     
@@ -61,6 +74,8 @@ $(function(){ //ready function
         else
             if (event.keyCode === 13) $("#divNumber").fadeOut(500, function(){ $("#divMain").fadeIn(500, function(){})});
     });
+    
+    $("#txtServer").focus();
 });
 
 
@@ -68,7 +83,7 @@ $(function(){ //ready function
 
 function validateControl(control, valid) {
     if (valid)
-        $(control).animate({ backgroundColor: '#C0FFC0' }, 300);
+        $(control).animate({ backgroundColor: '#C0FFC0', borderColor: '#00FF00'  }, 300);
     else
-        $(control).animate({ backgroundColor: '#FFD0D0' }, 300);
+        $(control).animate({ backgroundColor: '#FFD0D0', borderColor: '#FF0000' }, 300);
 }

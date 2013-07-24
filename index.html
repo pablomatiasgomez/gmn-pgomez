@@ -7,7 +7,8 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.color-2.1.2.min.js"></script>
-        
+        <script type="text/javascript" src="js/md5.js"></script>
+
         <script type="text/javascript" src="js/functions.js"></script>
         
         
@@ -16,7 +17,10 @@
         <meta name="author" content="Gomez Pablo Matias" />
         <meta charset="UTF-8" />
  
-        <!-- <meta http-equiv="refresh" content="30"> "iso-8859-1"--> 
+        <!--
+        "number":1234,
+        "numberId":"cd579ee4ac1487196859e3799a0c9861"
+         <meta http-equiv="refresh" content="30"> "iso-8859-1"--> 
 	</head>
 	<body>
         <div id="container">
@@ -25,9 +29,9 @@
             <div id="divServer" class="initForm">
         		<h2>Ingresar datos del servidor</h2>
         		<form id="frmServer">
-        			<label for="txtServer">Servidor:</label><input id="txtServer" type="text" title="Ingrese aqu&iacute; la direcci&oacute;n de IP correspondiente al servidor a conectarse" />
+        			<label for="txtServer">Servidor:</label><input id="txtServer" type="text" title="Ingrese aqu&iacute; la direcci&oacute;n de IP correspondiente al servidor a conectarse" placeholder="Direcci&oacute;n IP" />
         			<br />
-                    <label for="txtPort">Puerto:</label><input id="txtPort" type="text" title="Ingrese aqu&iacute; el puerto correspondiente al servidor a conectarse" />
+                    <label for="txtPort">Puerto:</label><input id="txtPort" type="text" title="Ingrese aqu&iacute; el puerto correspondiente al servidor a conectarse" placeholder="Puerto del servidor" />
         			<br />
         			<input id="btnServer_Save" type="button" value="Guardar" />
         		</form>

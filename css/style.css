@@ -5,6 +5,10 @@ body {
     background-image: url("../images/background-pattern.png");
 }
 
+input[type="text"]:focus{
+    outline:0px;
+}
+
 h1 {
     text-align: center;
     margin-top: 10px;
@@ -44,18 +48,40 @@ label {
             border-radius: 5px;
         }
     
-        .initForm input[type="text"]
-        {
+        .initForm input[type="text"] {
             margin: 3px;
             padding: 3px 10px;
             width: 275px;
             border: 1px solid black;
             border-radius: 50px 5px;
             font-style: italic;
+            box-shadow: 0 2px 0 #AAAAAA inset;
         }
         
-        .initForm input[type="button"]
-        {
+        .initForm .result {
+            font-size: 12px;
+            border:  1px solid;
+            padding: 2px;
+            margin: 10px;
+            border-radius: 2px;
+            background-color: #FFB0B0;
+            
+            overflow: auto;
+        }
+        
+            .initForm .result img{
+                margin: 1px;
+                margin-top: 2px;
+                float: left;
+            }
+            
+            .initForm .result span{
+                margin: 1px;
+                font-style: italic;
+                float: left;
+            }
+        
+        .initForm input[type="button"] {
             float: right;
         }
 

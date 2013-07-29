@@ -3,34 +3,87 @@
 //                    //
 ////////////////////////
 
-
-/*for(x=10000000000000; x <= 99999999999999999; x++){
-            if ($.md5(1234 + x) == "cd579ee4ac1487196859e3799a0c9861")
-                alert (x);
-            if ((x % 10000000) == 0)
-                console.log((x-10000000000000) * 100 / 9989999999999999);
-        }
-
+/*
         
-//  10000000000000
-//  99999999999999999
-//0.77453316655009981
+        yahoo:
+        
+        
+        
+var oCirculo = function() {
+    //variables privadas
+    var pi = 3.1416;
+    var radio = 10;
+    
+    return {
+        color:"#FFFFFF",
+        setRadio:function(value) {
+            radio = value;
+        },
+        getRadio:function() {
+            return radio;
+        },
+        getPerimetro:function() {
+            return (pi*radio).toString();
+        }
+    }
+}();
 
 
-        return;*/
+*/
 
-$(document).ready(function() { $("#divServer").show(); });
 
 $(function(){ //ready function 
-
+    $("#divServer").show();
+    
+    var oServer = function() {
+        //variables privadas
+        var url = "";
+        
+        
+        return {
+            setUrl:function(value) {
+                url = value;
+            },
+            
+            getData: function(subUrl){
+                var a;
+                $.ajax({
+                    type: 'GET',
+                    url: url + subUrl,
+                    dataType:"json",
+                    success: function(data) { alert(data); a = data; }
+                });
+                alert(a);
+                return a;
+            }
+        }
+    }();
+    
     $("#frmServer input[type='text']").keyup(function (event) { if (event.keyCode === 13) $($($(this).parent()).find("input[type='button']")).click(); else validateForm(1); });
     $("#frmUser input[type='text']").keyup(function (event) { if (event.keyCode === 13) $($($(this).parent()).find("input[type='button']")).click(); else validateForm(2); });
     $("#frmNumber input[type='text']").keyup(function (event) { if (event.keyCode === 13) $($($(this).parent()).find("input[type='button']")).click(); else validateForm(3); });
     
     
     $("#btnServer_Save").click(function (){
-        if (validateForm(1))
-            $("#divServer").fadeOut(500, function(){ $("#divUser").fadeIn(500, function(){ $("#txtUser").focus(); })});
+        if (validateForm(1)){
+             $.ajax({
+                type: 'GET',
+                url: "http://" +  $("#txtServer").val() + "/version",
+                dataType:"json",
+                success: function(data){
+                    
+                    alert(data['version']);
+                    if (data['version']) {
+                        //Guardo datos del servidor
+                        oServer.setUrl("http://" +  $("#txtServer").val() + "/")
+                        //Muestro siguiente form
+                        alert((oServer.getData("version"))['version']);
+                        $("#divServer").fadeOut(500, function(){ $("#divUser").fadeIn(500, function(){ $("#txtUser").focus(); })});
+                    }
+                }
+             });
+        }
+            
     });
     
     $("#btnUser_Save").click(function (){

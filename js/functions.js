@@ -28,8 +28,62 @@ var oCirculo = function() {
     }
 }();
 
+[A-z0-9 \-]+[af]\n
 
+var regex = /^[A-z0-9.\-]+$/;
+result= name.match(regex); parte encontrada
+name.test / true o false ! par seervy etc.
+nombre user:
+^[A-z0-9]+$
+Servidor: 
+^[A-z0-9\.\-]+$
+Numero de 4 digitos: 
+^[0-9]{4,4}$
+
+
+
+var properties = {
+            "url":"http://gmn.despegar.net"
+            "port":80;
+        }
+        for (var property in options) {
+            properties[property] = options[property];
+        }        
 */
+
+var getVersion = function (callback)
+{
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=funcion(){
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            //var result=JSON.parse(xmlhtp.responseText);
+            //alert(result.version);
+            callback(xmlhttp);
+        }
+    }
+    xmlhttp.open("GET", "http://gmn.despegar.net/version",true);
+    xmlhttp.send();
+}
+
+
+
+
+oerver.getversion(function(xmlhttp) {
+    var result=JSON.parse(xmlhtp.responseText);
+    alert(result.version);
+})
+
+oServer.getVersion(function(data){ data.version }) //en esto tengo que aplicar el json parse !!!
+
+
+
+
+
+
+
+
+
+
 
 
 $(function(){ //ready function 
@@ -39,22 +93,31 @@ $(function(){ //ready function
         //variables privadas
         var url = "";
         
-        
+
+        var setUrl = function(value) {
+            url = value;
+        },
         return {
-            setUrl:function(value) {
-                url = value;
-            },
+            "setUrl": setUrl;
             
-            getData: function(subUrl){
-                var a;
+            "getData": function(subUrl){
+                var aa = '';
                 $.ajax({
                     type: 'GET',
                     url: url + subUrl,
                     dataType:"json",
-                    success: function(data) { alert(data); a = data; }
+                    //success: function(data) { alert(data); a = data; }
+                    complete: function(data){
+                        a = data;
+                        //data.status === 200;
+
+                    }
+                }).done( function(data){
+                    alert("done:" + data['version']);
+                    return data['version'];
                 });
-                alert(a);
-                return a;
+                alert("return:" + aa.toString());
+                return aa;
             }
         }
     }();
@@ -72,12 +135,12 @@ $(function(){ //ready function
                 dataType:"json",
                 success: function(data){
                     
-                    alert(data['version']);
+                    
                     if (data['version']) {
                         //Guardo datos del servidor
                         oServer.setUrl("http://" +  $("#txtServer").val() + "/")
                         //Muestro siguiente form
-                        alert((oServer.getData("version"))['version']);
+                        alert("devuelve:" + (oServer.getData("version")));
                         $("#divServer").fadeOut(500, function(){ $("#divUser").fadeIn(500, function(){ $("#txtUser").focus(); })});
                     }
                 }

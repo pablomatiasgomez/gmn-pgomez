@@ -12,6 +12,7 @@ input[type="text"]:focus{
 h1 {
     text-align: center;
     margin-top: 10px;
+    color: #227722;
 }
 
 h2 {
@@ -26,7 +27,60 @@ label {
     margin: 3px 0;
     font-size: 14px;
 }
-        
+       
+.result {
+    display:none;
+} 
+
+
+#divData{
+    overflow: hidden; 
+    position:absolute; 
+    border: 1px solid #AAAAAA; 
+    display: block; 
+    z-index: 1005; 
+    height: 160px; 
+    width: 280px; 
+    top: 50px; 
+    left: 50px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px #AAAAAA;
+    background-color: #FFFFFF;
+}
+
+    #divData #divTitle {
+        clear: both;
+        display: block;  
+        cursor:move;
+        position: relative; 
+        border:1px solid #AAAAAA; 
+        margin: 2px;
+        padding: 5px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 12px;
+        background-color: #CCCCCC;
+        box-shadow: 1px 1px 3px 0px #CCCCCC;
+    }
+    
+    #divData #divContent {
+         display: block;
+         width: auto; 
+         min-height: 0px; 
+    }
+    
+    #divData #divContent ul {
+        list-style:none;
+        padding-left: 10px;
+        padding-top: 0;
+        font-size: 12px;
+    }
+    
+     #divData #divContent li {
+        padding-bottom: 3px;
+    }
+    
+
 #container {
     margin:  0 auto;
     width: 1000px;
@@ -88,7 +142,7 @@ label {
 
 
 #divMain {
-    margin: 50px;
+    margin: 25px 50px 50px;
     overflow: hidden;
     display: none;
 } 
@@ -96,7 +150,6 @@ label {
     #divOponent {
         float: left;
         width: 330px;
-        margin-bottom: 700px;
         border-radius: 5px;
         border: 2px dashed;
         padding: 15px;
@@ -144,6 +197,16 @@ label {
             background-color: #C8E6B4;
             border-radius: 10px;
         }
+        
+        #tblPlayers .userColor{
+            border-color: yellow green blue red;
+            border-style:solid;
+            border-width:15px;
+            width:0;
+            height:0;
+            margin-left: 10px;
+        }
+        
             #tblPlayers td, #tblPlayers th{
                 border: 1px solid black;
                 text-align: center;

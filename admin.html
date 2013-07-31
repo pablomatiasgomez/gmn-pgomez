@@ -1,0 +1,112 @@
+ <!DOCTYPE html>
+ <html>
+	<head>
+		<title>Guess My Number</title>
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.color-2.1.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
+        <style type="text/css">
+        
+            table {
+                border-collapse: collapse;
+                font-size: 12px;
+            }
+            
+            th, td{
+                border: 1px solid black;
+                text-align: center; 
+            }
+            input[type='button']{
+                margin: 5px;
+            }
+        </style>
+        <script type="text/javascript">
+        
+        $(function(){ //ready function 
+            $("#divData").draggable({ handle: "#divTitle" });
+            
+            $("#divData").width("90px");
+            $("#divData").height("70px");
+            
+            $("#divData").css("top", $(window).height() - 200);
+            $("table").width($(window).width() - 25);
+            $(window).resize(function() {
+                $("table").width($(window).width() - 25);
+                $("#divData").css("top", $(window).height() - 200);
+            });
+            refresh();
+        });
+        function refresh(){
+            
+            $.ajax({
+                type: 'GET',
+                url: "http://gmn.despegar.net/admin/board/1234",
+                dataType:"json",
+                success: function(data) {
+                    $("tbody").html('');
+                    $.each(data['players'], function(index, value){ 
+                        html= "<tr> <td rowspan='5'><NAME></td> <td rowspan='5'><PRIVID></td> <td rowspan='5'><PUBID></td> <td rowspan='5'><NUMBER></td> <td rowspan='5'><ACTIVE></td> <td rowspan='5'><SCORE></td> ";
+                        html = html.replace("<NAME>", value['name']);
+                        html = html.replace("<PRIVID>", value['privateUuid']);
+                        html = html.replace("<PUBID>", value['publicUuid']);
+                        html = html.replace("<NUMBER>", value['number']);
+                        html = html.replace("<ACTIVE>", value['activeNumber']);
+                        html = html.replace("<SCORE>", value['score']);
+                        
+                        
+                        html += "    <td>setedNumbers</td> <td>" + value['stats']['setedNumbers']['quantity'] + "</td> <td>" + value['stats']['setedNumbers']['score'] + "</td></tr>";
+                        html += "<tr><td>guessedNumbers</td> <td>" + value['stats']['guessedNumbers']['quantity'] + "</td> <td>" + value['stats']['guessedNumbers']['score'] + "</td></tr>";
+                        html += "<tr><td>wrongGuessedNumbers</td> <td>" + value['stats']['wrongGuessedNumbers']['quantity'] + "</td> <td>" + value['stats']['wrongGuessedNumbers']['score'] + "</td></tr>";
+                        html += "<tr><td>wrongGuessNumbersReceived</td> <td>" + value['stats']['wrongGuessNumbersReceived']['quantity'] + "</td> <td>" + value['stats']['wrongGuessNumbersReceived']['score'] + "</td></tr>";
+                        html += "<tr><td>wastedRequests</td> <td>" + value['stats']['wastedRequests']['quantity'] + "</td> <td>" + value['stats']['wastedRequests']['score'] + "</td></tr>";
+                        
+
+                        $("tbody").append(html);
+                    });
+                    $("table").width($(window).width() - 25);
+                },
+                error: function(data) {
+                    alert('ERROR');
+                }
+            });
+        }
+
+        </script>
+        
+        <meta name="keywords" content="Guess, Number, Game, Adivinar, Juego, Numero" />
+        <meta name="description" content="A game to guess numbers" />
+        <meta name="author" content="Gomez Pablo Matias" />
+        <meta charset="iso-8859-1" />
+	</head>
+	<body>
+        <div id="divData" tabindex="-1">
+            <div id="divTitle">Informaci&oacute;n</div>
+            <div id="divContent">
+                <input type="button" onclick="javascript:refresh();" value="Refresh" />
+            </div>
+        </div>
+        
+
+        <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>PRIVID</th> 
+                <th>PUBID</th> 
+                <th>NUMBER</th> 
+                <th>ACTIVE</th> 
+                <th>SCORE</th>
+                <th colspan="3">STATS</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        </tbody>
+        </table>
+
+	</body>
+</html>

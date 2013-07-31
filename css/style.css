@@ -1,7 +1,6 @@
 
 body {
     font-family: Tahoma;
-    /*background-color: #F5F6CE;*/
     background-image: url("../images/background-pattern.png");
 }
 
@@ -31,6 +30,11 @@ label {
 .result {
     display:none;
 } 
+
+table {
+    box-shadow: 0 0 20px 1px #30FF30;
+    background-color: #C8E6B4;
+}
 
 
 #divData{
@@ -146,6 +150,14 @@ label {
     overflow: hidden;
     display: none;
 } 
+    #divMain .userColor {
+        border-color: yellow green blue red;
+        border-style:solid;
+        border-width:15px;
+        width:0;
+        height:0;
+        margin-left: 20px;
+    }
 
     #divOponent {
         float: left;
@@ -153,9 +165,26 @@ label {
         border-radius: 5px;
         border: 2px dashed;
         padding: 15px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 4px 3px #AAAAAA;
+        background: rgba(255,255,255,0.5);
     }
     
-        #divOponent form {
+        #divOponent #tblOponent   {
+            border-collapse: collapse;
+            border: 2px dashed;
+            width: 100%;
+            border-radius: 10px;
+            display: none;
+        }
+            
+            #divOponent #tblOponent td, #divOponent #tblOponent th{
+                border: 1px solid black;
+                text-align: center;
+            }
+
+        #divOponent #frmGuessNumber {
             border: 1.5px dashed;
             margin: 10px;
             padding: 10px;
@@ -172,16 +201,15 @@ label {
             width: 110px;
         }
         
-        #tblAttemps {
+        #tblAttempts {
             border-collapse:collapse;
             border: 1px solid black;
             width: 100%;
-            background-color: #C8E6B4;
             margin: 5px;
             padding: 5px;
             font-size: 14px;
         }
-            #tblAttemps td, #tblAttemps th{
+            #tblAttempts td, #tblAttempts th{
                 border: 1px solid black;
                 text-align: center;
             }
@@ -189,24 +217,21 @@ label {
     #divPlayers {
         float: right;
         width: 350px;
+        margin-top: -55px;
     }
+        #divPlayers #btnRefreshLobby {
+            float: right;
+            margin-top: -40px;
+            margin-right: 20px;
+        }
+        
         #tblPlayers   {
             border-collapse: collapse;
             border: 2px dashed;
-            width: 100%;
-            background-color: #C8E6B4;
+            width: 95%;
             border-radius: 10px;
+            margin-bottom: 10px;
         }
-        
-        #tblPlayers .userColor{
-            border-color: yellow green blue red;
-            border-style:solid;
-            border-width:15px;
-            width:0;
-            height:0;
-            margin-left: 10px;
-        }
-        
             #tblPlayers td, #tblPlayers th{
                 border: 1px solid black;
                 text-align: center;

@@ -25,6 +25,7 @@
                     <li id="publicID"></li>
                     <li id="number"></li>
                     <li id="score"></li>
+                    <li id="attempts"></li>
                 </ul>
             </div>
         </div>
@@ -51,7 +52,7 @@
             <div id="divUser" class="initForm">
         		<h2>Ingresar nombre de usuario</h2>
         		<div id="frmUser" class="form">
-        			<label for="txtUser">Usuario:</label><input id="txtUser" type="text" title="Ingrese aqu&iacute; el nombre de usuario a utilizar" />
+        			<label for="txtUser">Usuario:</label><input id="txtUser" type="text" title="Ingrese aqu&iacute; el nombre de usuario a utilizar" placeholder="Nombre de usuario a elegir" />
         			<br />
                     <div class="result">
                         <img alt="Error:" src="images/icons/wrong.ico" /><span></span>
@@ -65,7 +66,7 @@
     		<div id="divNumber" class="initForm">
                 <h2>Ingresar el n&uacute;mero a utilizar</h2>
         		<div id="frmNumber" class="form">
-        			<label for="txtNumber">N&uacute;mero:</label><input id="txtNumber" type="text" title="Ingrese aqu&iacute; el n&uacute;mero a elegir" maxlength="4" />
+        			<label for="txtNumber">N&uacute;mero:</label><input id="txtNumber" type="text" title="Ingrese aqu&iacute; el n&uacute;mero a elegir" placeholder="N&uacute;mero a elegir" maxlength="4" />
         			<br />
                     <div class="result">
                         <img alt="Error:" src="images/icons/wrong.ico" /><span></span>
@@ -77,62 +78,49 @@
             <div id="divMain">
                 <h2>Contrincante</h2>
                 <div id="divOponent">
-                    <label>Usuario 15</label>
-                    <hr />
-                    
-                    <h3>Adivinar n&uacute;mero</h3>
-                    <form id="frmGuessNumber">
-                        <label for="txtNumber">N&uacute;mero:</label><input id="txtGuessNumber" type="text" title="Ingrese el numero a adivinar" maxlength="4" />
-                        <input type="button" value="Adivinar" />
-                    </form>
-                    <hr />
-                    
-                    <h3>Intentos realizados</h3>
-                    <table id="tblAttemps">
+                    <table id="tblOponent">
                         <thead>
-                            <tr>
-                                <th>N&uacute;mero</th>
-                                <th>Correctos</th>
-                                <th>Acertados</th>
-                                <th>Err&oacute;neos</th>
+                            <tr>    
+                                <th></th>
+                                <th>N&uacute;mero activo</th>
+                                <th>Score</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1111</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>1111</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>1111</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>1111</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>1111</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                            </tr>
                         </tbody>
                     </table>
+                    <hr />
+                    
+                    <h3>Adivinar n&uacute;mero</h3>
+                    <div id="frmGuessNumber">
+                        <label for="txtGuessNumber">N&uacute;mero:</label><input id="txtGuessNumber" type="text" title="Ingrese el numero a adivinar" maxlength="4" />
+                        <input id="btnGuess" type="button" disabled="disabled" value="Adivinar" />
+                        <div class="result">
+                            <img alt="Error:" src="images/icons/wrong.ico" /><span></span>
+                        </div>
+                    </div>
+                    <hr />
+                    
+                    <h3>Intentos realizados</h3>
+                    <div id="divAttempts">
+                        <table id="tblAttempts">
+                            <thead>
+                                <tr>
+                                    <th>N&uacute;mero</th>
+                                    <th>Correctos</th>
+                                    <th>Existentes</th>
+                                    <th>Err&oacute;neos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 
                 <div id="divPlayers">
+                    <h2>Lobby</h2>
+                    <input id="btnRefreshLobby" type="button" value="Refresh" />
                     <table id="tblPlayers">
                         <thead>
                             <tr>

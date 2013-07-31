@@ -11,9 +11,55 @@ preguntas a hacer:
     validacion con w3 errores de ISO y etc...
     Coomo crear un array de oponentes dentro de client
     Obejto dentro de objetos.. ya arme objeto, como los meot como arrays a ambos ?
-    
+
     that's it
+
+    TODO: No permiirme setear un numero que ya habia seteado.. ! o repguntar!   
+    un js por objeto !!!!
+    individualiar obejtos para que no utilizen a los demas... ! parametrizAR
+    TODO : hacer clases e vez de objetos y parametrizar para poder pasarle server al cliente
+    TODO: setTimeOut ( rellamandola para problemas de sincronia)
+    TODO: haceer timerrrrr 1000ms
+    TODO: MODIFICAR VALORE fijos POR CONSTANTES !
+    TODO: timetonexATETEMP !                                                
+    TODO: guardar hashes de numeros sabidos para adivinar los siguients si son iguales!
+    TODO: mostrar intentos por numberid y no POR USUARIO !!!
+    TODO: verificar hash e number para saeber si el contricante sigue con el mismo numero !
+    TODO: si no tenes numero, se muestra solo pantalla de numero !! CAmbiar tipo de errores para que se muestren en la patanlla a la que se redigirge (.result)
 */
+
+
+
+
+/*
+var oserver = server({"a": "a"});
+options
+
+
+
+
+var arr;
+
+arr['uuid234823094823f99sd809fsdf'] = Objeto ;
+arr[saddasdas].guessed.. ;
+va intentos;
+intentos.
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 $(function(){ //ready function 

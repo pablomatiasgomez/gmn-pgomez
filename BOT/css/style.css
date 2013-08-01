@@ -1,0 +1,241 @@
+
+body {
+    font-family: Tahoma;
+    background-image: url("../images/background-pattern.png");
+}
+
+input[type="text"]:focus{
+    outline:0px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    color: #227722;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+label {
+    margin: 3px 0;
+    font-size: 14px;
+}
+       
+table {
+    box-shadow: 0 0 20px 1px #30FF30;
+    background-color: #C8E6B4;
+}
+
+.result {
+    display:none;
+} 
+
+.result {
+    font-size: 12px;
+    border:  1px solid;
+    padding: 2px;
+    margin: 10px;
+    border-radius: 2px;
+    background-color: #FFB0B0;
+    overflow: auto;
+}
+
+    .result img{
+        margin: 1px;
+        margin-top: 2px;
+        float: left;
+    }
+    
+    .result span{
+        margin: 1px;
+        font-style: italic;
+        float: left;
+    }
+
+
+
+#divData{
+    overflow: hidden; 
+    position:absolute; 
+    border: 1px solid #AAAAAA; 
+    display: block; 
+    z-index: 1005; 
+    height: 160px; 
+    width: 280px; 
+    top: 50px; 
+    left: 50px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px #AAAAAA;
+    background-color: #FFFFFF;
+}
+
+    #divData #divTitle {
+        clear: both;
+        display: block;  
+        cursor:move;
+        position: relative; 
+        border:1px solid #AAAAAA; 
+        margin: 2px;
+        padding: 5px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 12px;
+        background-color: #CCCCCC;
+        box-shadow: 1px 1px 3px 0px #CCCCCC;
+    }
+    
+    #divData #divContent {
+         display: block;
+         width: auto; 
+         min-height: 0px; 
+    }
+    
+    #divData #divContent ul {
+        list-style:none;
+        padding-left: 10px;
+        padding-top: 0;
+        font-size: 12px;
+    }
+    
+     #divData #divContent li {
+        padding-bottom: 3px;
+    }
+    
+
+#container {
+    margin:  0 auto;
+    width: 1000px;
+    height: auto;
+    padding: 10px 20px;
+}
+
+    .initForm {
+        margin:  60px auto;
+        width: 345px;
+        display: none;
+    }
+        .initForm .form {
+            border: 1.5px dashed;
+            margin: 10px;
+            padding: 10px;
+            background-color: #C8E6B4;
+            overflow: auto;
+            border-radius: 5px;
+        }
+    
+        .initForm input[type="text"] {
+            margin: 3px;
+            padding: 3px 10px;
+            width: 275px;
+            border: 1px solid black;
+            border-radius: 50px 5px;
+            font-style: italic;
+            box-shadow: 0 2px 0 #AAAAAA inset;
+        }
+        
+        .initForm input[type="button"] {
+            float: right;
+        }
+
+
+
+#divMain {
+    margin: 25px 50px 50px;
+    overflow: hidden;
+    display: none;
+} 
+    #divMain .userColor {
+        border-color: yellow green blue red;
+        border-style:solid;
+        border-width:15px;
+        width:0;
+        height:0;
+        margin-left: 20px;
+    }
+
+    #divOponent {
+        float: left;
+        width: 330px;
+        border-radius: 5px;
+        border: 2px dashed;
+        padding: 15px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 4px 3px #AAAAAA;
+        background: rgba(255,255,255,0.5);
+    }
+    
+        #divOponent #tblOponent   {
+            border-collapse: collapse;
+            border: 2px dashed;
+            width: 100%;
+            border-radius: 10px;
+            display: none;
+        }
+            #divOponent #tblOponent thead th:first-child {
+                width: 76px;
+            }
+            
+            #divOponent #tblOponent td, #divOponent #tblOponent th{
+                border: 1px solid black;
+                text-align: center;
+            }
+
+        #divOponent #frmGuessNumber {
+            border: 1.5px dashed;
+            margin: 10px;
+            padding: 10px;
+            background-color: #C8E6B4;
+            overflow: auto;
+            border-radius: 10px;
+        }
+        
+        #divOponent input[type="text"]
+        {
+            margin: 3px;
+            padding: 3px;
+            border: 1px solid black;
+            width: 110px;
+        }
+        
+        #tblAttempts {
+            border-collapse:collapse;
+            border: 1px solid black;
+            width: 100%;
+            margin: 5px;
+            padding: 5px;
+            font-size: 14px;
+        }
+            #tblAttempts td, #tblAttempts th{
+                border: 1px solid black;
+                text-align: center;
+            }
+        
+    #divPlayers {
+        float: right;
+        width: 350px;
+        margin-top: -55px;
+    }
+        #divPlayers #btnRefreshLobby {
+            float: right;
+            margin-top: -40px;
+            margin-right: 20px;
+        }
+        
+        #tblPlayers   {
+            border-collapse: collapse;
+            border: 2px dashed;
+            width: 95%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+            #tblPlayers td, #tblPlayers th{
+                border: 1px solid black;
+                text-align: center;
+            }

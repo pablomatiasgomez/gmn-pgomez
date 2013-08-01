@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+ <html>
+	<head>
+		<title>Guess My Number</title>
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.color-2.1.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
+        
+        <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/client.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+        
+        <meta name="keywords" content="Guess, Number, Game, Adivinar, Juego, Numero" />
+        <meta name="description" content="A game to guess numbers" />
+        <meta name="author" content="Gomez Pablo Matias" />
+        <meta charset="iso-8859-1" />
+	</head>
+	<body>
+        <div id="divData" tabindex="-1">
+            <div id="divTitle">Informaci&oacute;n</div>
+            <div id="divContent">
+                <ul>
+                    <li id="user"></li>
+                    <li id="publicID"></li>
+                    <li id="number"></li>
+                    <li id="score"></li>
+                    <li id="attempts"></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Intentos realizados</h3>
+        <table id="tblAttempts">
+            <thead>
+                <tr>
+                    <th>Public UUID</th>
+                    <th>N&uacute;mero</th>
+                    <th>Correctos</th>
+                    <th>Existentes</th>
+                    <th>Err&oacute;neos</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+	</body>
+</html>

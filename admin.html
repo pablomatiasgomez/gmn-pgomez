@@ -42,11 +42,12 @@
                     success: function(data) {
                         $("tbody").html('');
                         $.each(data['players'], function(index, value){ 
-                            html= "<tr> <td rowspan='5'><NAME></td> <td rowspan='5'><PRIVID></td> <td rowspan='5'><PUBID></td> <td rowspan='5'><NUMBER></td> <td rowspan='5'><ACTIVE></td> <td rowspan='5'><SCORE></td> ";
+                            html= "<tr> <td rowspan='5'><NAME></td> <td rowspan='5'><PRIVID></td> <td rowspan='5'><PUBID></td> <td rowspan='5'><NUMBER> (<NUMBERID>)</td> <td rowspan='5'><ACTIVE></td> <td rowspan='5'><SCORE></td> ";
                             html = html.replace("<NAME>", value['name']);
                             html = html.replace("<PRIVID>", value['privateUuid']);
                             html = html.replace("<PUBID>", value['publicUuid']);
                             html = html.replace("<NUMBER>", value['number']);
+                            html = html.replace("<NUMBERID>", value['numberId']);
                             html = html.replace("<ACTIVE>", value['activeNumber']);
                             html = html.replace("<SCORE>", value['score']);             
                             html += "    <td>setedNumbers</td> <td>" + value['stats']['setedNumbers']['quantity'] + "</td> <td>" + value['stats']['setedNumbers']['score'] + "</td></tr>";

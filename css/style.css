@@ -27,14 +27,37 @@ label {
     font-size: 14px;
 }
        
-.result {
-    display:none;
-} 
-
 table {
     box-shadow: 0 0 20px 1px #30FF30;
     background-color: #C8E6B4;
 }
+
+.result {
+    display:none;
+} 
+
+.result {
+    font-size: 12px;
+    border:  1px solid;
+    padding: 2px;
+    margin: 10px;
+    border-radius: 2px;
+    background-color: #FFB0B0;
+    overflow: auto;
+}
+
+    .result img{
+        margin: 1px;
+        margin-top: 2px;
+        float: left;
+    }
+    
+    .result span{
+        margin: 1px;
+        font-style: italic;
+        float: left;
+    }
+
 
 
 #divData{
@@ -116,29 +139,6 @@ table {
             box-shadow: 0 2px 0 #AAAAAA inset;
         }
         
-        .initForm .result {
-            font-size: 12px;
-            border:  1px solid;
-            padding: 2px;
-            margin: 10px;
-            border-radius: 2px;
-            background-color: #FFB0B0;
-            
-            overflow: auto;
-        }
-        
-            .initForm .result img{
-                margin: 1px;
-                margin-top: 2px;
-                float: left;
-            }
-            
-            .initForm .result span{
-                margin: 1px;
-                font-style: italic;
-                float: left;
-            }
-        
         .initForm input[type="button"] {
             float: right;
         }
@@ -178,6 +178,9 @@ table {
             border-radius: 10px;
             display: none;
         }
+            #divOponent #tblOponent thead th:first-child {
+                width: 76px;
+            }
             
             #divOponent #tblOponent td, #divOponent #tblOponent th{
                 border: 1px solid black;

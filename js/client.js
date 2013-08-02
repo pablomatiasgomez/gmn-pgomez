@@ -8,6 +8,7 @@ var Client = function() {
     var nextAttempt = new Date().getTime();
     var guessTimer;
     
+    var numbers = {}; // Array: [Number()];
     var numbersSetted = [];
     
     
@@ -69,10 +70,7 @@ var Client = function() {
         if (guessTimer != undefined)
             clearTimeout(guessTimer);
     }
-    
-    var numbers = []; // Array: [Number()];
-    
-    
+
     return {
         "setName": setName,
         "getName": getName,

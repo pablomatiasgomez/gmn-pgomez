@@ -182,6 +182,42 @@ $(function(){ //ready function
     });
     
     $("#btnServer_Save").click(function (){
+        //oClient = Client();
+                
+        numberId= 'ffff5-59fabc-4-ffffff';
+        console.log((typeof oClient.numbers[numberId] === 'object') ? 'tiene intentos realizados' : '');
+        console.log((typeof oClient.numbers[numberId] === 'string') ? 'tengo el numero adivinado': '');
+        console.log((typeof oClient.numbers[numberId] === 'undefined') ? 'esta indefinido': '');
+        
+        if (oClient.numbers[numberId] === undefined){
+            oClient.numbers[numberId] = [];
+        }
+        
+        oClient.numbers[numberId].push({
+            "number": '1231',
+            "correctChars": '1',
+        });
+        oClient.numbers[numberId].push({
+            "number": '1221',
+            "correctChars": '2',
+        });
+        oClient.numbers[numberId].push({
+            "number": '1341',
+            "correctChars": '4',
+        });
+      console.log((typeof oClient.numbers[numberId] === 'object') ? 'tiene intentos realizados' : '');
+        console.log((typeof oClient.numbers[numberId] === 'string') ? 'tengo el numero adivinado': '');
+        console.log((typeof oClient.numbers[numberId] === 'undefined') ? 'esta indefinido': '');
+        
+        oClient.numbers[numberId] = '1234';
+        
+       console.log((typeof oClient.numbers[numberId] === 'object') ? 'tiene intentos realizados' : '');
+        console.log((typeof oClient.numbers[numberId] === 'string') ? 'tengo el numero adivinado': '');
+        console.log((typeof oClient.numbers[numberId] === 'undefined') ? 'esta indefinido': '');
+        
+        console.log(oClient.numbers);
+        return;
+
         /*number = {};
         
         // en cada number guardo por hash un numero, adentro de eso si SE el numero ya lo tendria guardado y sino tendria guardado los intentos, tal numero y un jason adentro que tenga los correctos, etc??

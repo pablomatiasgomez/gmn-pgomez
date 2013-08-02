@@ -5,7 +5,11 @@ var Client = function() {
     var number;
     var guessingToID = '';
     var attempts = 0;
+    var nextAttempt = new Date().getTime();
+    var guessTimer;
+    
     var numbersSetted = [];
+    
     
     var setName = function(value) {
         name = value;
@@ -47,6 +51,24 @@ var Client = function() {
         return (numbersSetted.indexOf(value) != -1);
     }
     
+    var setInterval = function(value) {
+        nextAttempt = new Date().getTime();
+        nextAttempt += value ;
+    }
+    
+    var timeToWait = function (){
+        now = new Date().getTime();
+        return (nextAttempt - now);   
+    }
+    
+    var setGuessTimer = function(value) {
+        guessTimer = value;
+    }
+    
+    var clearGuessTimer = function() {
+        if (guessTimer != undefined)
+            clearTimeout(guessTimer);
+    }
     
     var numbers = []; // Array: [Number()];
     
@@ -63,6 +85,10 @@ var Client = function() {
         "setAttempts": setAttempts,
         "getAttempts": getAttempts,
         "checkPreviousNumbers": checkPreviousNumbers,
+        "setInterval": setInterval,
+        "timeToWait": timeToWait,
+        "setGuessTimer": setGuessTimer,
+        "clearGuessTimer": clearGuessTimer,
         "numbers": numbers,
         
     }

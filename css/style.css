@@ -1,3 +1,14 @@
+/*
+      /////////////////////////////////////
+     //******************************** //
+    //         Gomez Pablo Matias      //
+   //         July 2013               //
+  //                                 //
+ //******************************** //
+/////////////////////////////////////
+
+*/
+
 
 body {
     font-family: Tahoma;
@@ -67,9 +78,10 @@ table {
     display: block; 
     z-index: 1005; 
     height: 160px; 
-    width: 280px; 
+    width: auto; /*280px */
+    min-width: 200px;
     top: 50px; 
-    left: 50px;
+    left: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px 1px #AAAAAA;
     background-color: #FFFFFF;
@@ -98,7 +110,8 @@ table {
     
     #divData #divContent ul {
         list-style:none;
-        padding-left: 10px;
+        padding-left: 5px;
+        padding-right: 3px;
         padding-top: 0;
         font-size: 12px;
     }
@@ -146,17 +159,18 @@ table {
 
 
 #divMain {
-    margin: 25px 50px 50px;
+    margin: 0px 110px;
     overflow: hidden;
     display: none;
 } 
     #divMain .userColor {
         border-color: yellow green blue red;
         border-style:solid;
-        border-width:15px;
+        border-width:12px;
         width:0;
         height:0;
-        margin-left: 20px;
+        margin: 3px 3px 3px 26px;
+        box-shadow: 0 0 3px 4px #FFFFFF;
     }
 
     #divOponent {
@@ -219,7 +233,7 @@ table {
         
     #divPlayers {
         float: right;
-        width: 350px;
+        width: 300px;
         margin-top: -55px;
     }
         #divPlayers #btnRefreshLobby {
@@ -235,6 +249,7 @@ table {
             border-radius: 10px;
             margin-bottom: 10px;
         }
+            
             #tblPlayers td, #tblPlayers th{
                 border: 1px solid black;
                 text-align: center;

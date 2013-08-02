@@ -18,6 +18,7 @@ var Server = function() {
                 url: url + subUrl,
                 dataType:"json",
                 success: function(data) {
+                    // TODO: USAR COMPLETE
                     callback(data);
                 },
                 error: function(data) {

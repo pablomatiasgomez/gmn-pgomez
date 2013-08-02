@@ -37,12 +37,73 @@ preguntas a hacer:
     TODO: verificar hash e number para saeber si el contricante sigue con el mismo numero ! ESTO ESTA HECHO PERO FALTARIA EL TEST CUANDO GUARDE CADA ACIERTOS DE NUMERO
     
     
-    
+    TODO: Hacer metodos en cliente y server ṕara cada accion.. !!!
+    TODO: cambiar el succes por complete (Error tmb)
     ERROR EN LA DOCUMENTACION GUESSNUMBER DEVUELVE ID DEL NUMBER DEL TIP; NO DEL TRIED
 */
 
 
 /*
+
+
+
+
+
+
+
+
+
+
+var tries = {};
+
+
+
+
+
+if (tries[numberId] === undefined){
+    tries[numberId] = [];
+}
+
+tries[numberId].push({
+    "number": data.number,
+    "correctChars": ...,
+    ...
+    ...
+    ...
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var oserver = server({"a": "a"});
 options
 

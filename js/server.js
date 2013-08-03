@@ -8,24 +8,25 @@ var Server = function() {
     }
     
     getData = function(subUrl, oClient, callback){
-        //$("li#asd").html("<u>testtttttt</u>: " + doOnWaiting + " OR " + !waiting);
-        //if (!waiting || doOnWaiting){
-            subUrl = subUrl.replace("<privateUuid>", oClient.getPrivateID());
-            subUrl = subUrl.replace("<publicUuid>", oClient.getGuessingToID());
-            waiting = true;
-            $.ajax({
-                type: 'GET',
-                url: url + subUrl,
-                dataType:"json",
-                success: function(data) {
-                    // TODO: USAR COMPLETE
-                    callback(data);
-                },
-                error: function(data) {
-                    callback(data);
-                }
-            }).done (function() { waiting = false;});
-        //}
+        subUrl = subUrl.replace("<privateUuid>", oClient.getPrivateID());
+        subUrl = subUrl.replace("<publicUuid>", oClient.getGuessingToID());
+        waiting = true;
+        $.ajax({
+            type: 'GET',
+            url: url + subUrl,
+            dataType:"json",
+           /* success: function(data) {
+                // TODO: USAR COMPLETE
+                callback(data);
+            },
+            error: function(data) {
+                callback(data);
+            }*/
+            complete: function(data) {
+                // TODO: USAR COMPLETE
+                callback(data);
+            },
+        }).done (function() { waiting = false;});
     }
         
     return {

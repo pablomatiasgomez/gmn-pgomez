@@ -70,6 +70,12 @@ var Client = function() {
         if (guessTimer != undefined)
             clearTimeout(guessTimer);
     }
+    
+    var addTry = function(){
+        
+        
+        
+    }
 
     return {
         "setName": setName,
@@ -88,7 +94,7 @@ var Client = function() {
         "setGuessTimer": setGuessTimer,
         "clearGuessTimer": clearGuessTimer,
         "numbers": numbers,
-        
+        "addTry": addTry,
     }
 };
 

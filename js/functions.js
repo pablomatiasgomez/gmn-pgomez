@@ -10,129 +10,17 @@
 /* 
 preguntas a hacer:
     validacion con w3 errores de ISO y etc...
-    Coomo crear un array de numeros dentro de client
-    Obejto dentro de objetos.. ya arme objeto, como los meot como arrays a ambos ?
-
-    problema de recibir message y timetonextattemp en ERROR ! PREGUNTAR !!!
-    OBJETOS 
-    
-    number = {};
-        
-        // en cada number guardo por hash un numero, adentro de eso si SE el numero ya lo tendria guardado y sino tendria guardado los intentos, tal numero y un jason adentro que tenga los correctos, etc??
-        number['HASH'] = {'number':'', "1235":{'correct': 3}};
-        number['HASH']['number'] = '1234';
-        //number['HASH'][]
-        console.log(number['HASH']);
-        return;
-        
-        
-    y lo mismo con numberSetted, esta bien hecho que sea con un array?
-    
-    
 
     TODO: setTimeOut ( rellamandola para problemas de sincronia)   haceer timerrrrr 1000ms
-                                            
-    TODO: guardar hashes de numeros sabidos para adivinar los siguients si son iguales!
-    TODO: mostrar intentos por numberid y no POR USUARIO !!!
-    TODO: verificar hash e number para saeber si el contricante sigue con el mismo numero ! ESTO ESTA HECHO PERO FALTARIA EL TEST CUANDO GUARDE CADA ACIERTOS DE NUMERO
-    
-    
     TODO: Hacer metodos en cliente y server ṕara cada accion.. !!!
-    TODO: cambiar el succes por complete (Error tmb)
+
     ERROR EN LA DOCUMENTACION GUESSNUMBER DEVUELVE ID DEL NUMBER DEL TIP; NO DEL TRIED
-*/
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-var tries = {};
-
-
-
-
-
-if (tries[numberId] === undefined){
-    tries[numberId] = [];
-}
-
-tries[numberId].push({
-    "number": data.number,
-    "correctChars": ...,
-    ...
-    ...
-    ...
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 var oserver = server({"a": "a"});
 options
 
-var arr;
 
-arr['uuid234823094823f99sd809fsdf'] = Objeto ;
-arr[saddasdas].guessed.. ;
-va intentos;
-intentos.
-
-FUNCAAAA !!:!:!:!:!:!:!:!!:!!:!: ASDASKASDM Pero no puedo aplicar diccionario... para guardar el hash del numero.. como hago ?
-
-        oNumber = Number();
-        
-        oNumber.setNum ( '1234');
-        oNumber.attempts[0].setNumber('1233');
-        oNumber.attempts[0].setCorrect ('1');
-        oNumber.attempts[0].setWrong ( '3');
-        oNumber.attempts[0].setExisting(  '2');
-        
-        index = oNumber.attempts.push(Attempt());
-
-        oNumber.attempts[index-1].setWrong('2343');
-        
-        $.each(oNumber.attempts, function(index, value){
-            //alert(oNumber.attempts[index].getNumber());
-           alert(oNumber.getNum()  + ' ' + value.getNumber() + ' ' + value.getCorrect() + ' ' + value.getWrong() + ' ' + value.getExisting()) ;
-            
-        });
 */
 
 KEY_ENTER = 13;
@@ -162,9 +50,9 @@ $(function(){ //ready function
     $("#txtServer").focus();
     $("#divData").draggable({ handle: "#divTitle" });
     
-    $("#divData").css("top", $(window).height() - 180);
+    $("#divData").css("top", $(window).height() - 160);
     $(window).resize(function() {
-        $("#divData").css("top", $(window).height() - 180);
+        $("#divData").css("top", $(window).height() - 160);
     });
 
     $("#frmServer input[type='text']").keyup(function (event) { if (event.keyCode === KEY_ENTER) $($($(this).parent()).find("input[type='button']")).click(); else validateForm(FORM_SERVER); });
@@ -182,52 +70,6 @@ $(function(){ //ready function
     });
     
     $("#btnServer_Save").click(function (){
-        //oClient = Client();
-                
-        numberId= 'ffff5-59fabc-4-ffffff';
-        console.log((typeof oClient.numbers[numberId] === 'object') ? 'tiene intentos realizados' : '');
-        console.log((typeof oClient.numbers[numberId] === 'string') ? 'tengo el numero adivinado': '');
-        console.log((typeof oClient.numbers[numberId] === 'undefined') ? 'esta indefinido': '');
-        
-        if (oClient.numbers[numberId] === undefined){
-            oClient.numbers[numberId] = [];
-        }
-        
-        oClient.numbers[numberId].push({
-            "number": '1231',
-            "correctChars": '1',
-        });
-        oClient.numbers[numberId].push({
-            "number": '1221',
-            "correctChars": '2',
-        });
-        oClient.numbers[numberId].push({
-            "number": '1341',
-            "correctChars": '4',
-        });
-      console.log((typeof oClient.numbers[numberId] === 'object') ? 'tiene intentos realizados' : '');
-        console.log((typeof oClient.numbers[numberId] === 'string') ? 'tengo el numero adivinado': '');
-        console.log((typeof oClient.numbers[numberId] === 'undefined') ? 'esta indefinido': '');
-        
-        oClient.numbers[numberId] = '1234';
-        
-       console.log((typeof oClient.numbers[numberId] === 'object') ? 'tiene intentos realizados' : '');
-        console.log((typeof oClient.numbers[numberId] === 'string') ? 'tengo el numero adivinado': '');
-        console.log((typeof oClient.numbers[numberId] === 'undefined') ? 'esta indefinido': '');
-        
-        console.log(oClient.numbers);
-        return;
-
-        /*number = {};
-        
-        // en cada number guardo por hash un numero, adentro de eso si SE el numero ya lo tendria guardado y sino tendria guardado los intentos, tal numero y un jason adentro que tenga los correctos, etc??
-        number['HASH'] = {'number':'', "1235":{'correct': 3}};
-        number['HASH']['number'] = '1234';
-        //number['HASH'][]
-        console.log(number['HASH']);
-        return;*/
-        
-        
         if (validateForm(FORM_SERVER)){
             $("#divServer .result").slideUp(ANIMATE_FAST);
             $.ajax({
@@ -254,7 +96,8 @@ $(function(){ //ready function
         if (validateForm(FORM_USER)){
             $("#divUser .result").slideUp(ANIMATE_FAST);
             oServer.getData('players/register/' + $("#txtUser").val(), oClient, function(data) {
-                if (data.status == undefined){
+                if (data.status === 200){
+                    data = data.responseJSON;
                     oClient.setName(data['name']);
                     oClient.setPrivateID(data['privateUuid']); //Guardo datos
                     $("#divUser").fadeOut(ANIMATE_FAST, function(){ $("#divNumber").fadeIn(ANIMATE_FAST, function(){ $("#txtNumber").focus(); })}); //Muestro siguiente form
@@ -275,7 +118,8 @@ $(function(){ //ready function
             else {
                 $("#divNumber .result").slideUp(ANIMATE_FAST);
                 oServer.getData('play/setnumber/<privateUuid>/' + $("#txtNumber").val(), oClient, function(data) {
-                    if (data.status == undefined){
+                    if (data.status === 200){
+                        data = data.responseJSON;
                         oClient.setNumber(data['number']); // Guardo datos
                         $("#divNumber").fadeOut(ANIMATE_FAST, function(){ $("#divMain").fadeIn(ANIMATE_FAST, function() { refreshBoard(); } )});   //Muestro siguiente form
                     }
@@ -298,21 +142,28 @@ $(function(){ //ready function
                 var timer = setTimeout(function(){
                     oServer.getData('play/guessnumber/<privateUuid>/<publicUuid>/' + $("#txtGuessNumber").val(), oClient, function(data) {
                         canGuess = true;
-                        if (data.status == undefined){  
-                            // TODO: guardo valores en Array de objetos de numeros con hash !!
-                            // TODO: // // data['numberId'];
-                            oClient.setInterval(data['timeToNextAttemp']); // Guardo intervalo para no ejercutar el proximo antes.
+                        if (data.status === 200){  
+                            data = data.responseJSON;
+                            oClient.setInterval(0);//oClient.setInterval(data['timeToNextAttemp']); // Guardo intervalo para no ejercutar el proximo antes.
                             oClient.clearGuessTimer();
                             
+                            if (oClient.numbers[data['numberId']] === undefined) oClient.numbers[data['numberId']] = [];
+                            if (typeof oClient.numbers[data['numberId']] != 'string'){
+                                oClient.numbers[data['numberId']].push({
+                                    "number": data['number'],
+                                    "correctChars": data['correctChars'],
+                                    "existingChars": data['existingChars'],
+                                    "wrongChars": data['wrongChars'],
+                                });
+                            }
                             tr_html =" <tr> <td>"  + data['number'] + "</td> <td>" + data['correctChars'] + "</td> <td>" + data['existingChars'] + "</td> <td>" + data['wrongChars'] + "</td> </tr>";
                             $("#tblAttempts tbody").append(tr_html).hide().fadeIn(ANIMATE_FAST);
-                            //$("#tblAttempts tbody tr:last-child");
                             
                             if (data['correctChars'] == 4){ // Adivne el numero !!
                                 oClient.setGuessingToID('');
-                                // TODO: Guardar el valor en el array de numeros con el numero adivinado para poder ser referenciado por el hash .. !
+                                oClient.numbers[data['numberId']] = data['number'].toString();
                                 $("#tblOponent").fadeOut(ANIMATE_SLOW, function(){ refreshBoard(); });
-                            }
+                            }   
                             $("#txtGuessNumber").focus();
                         }
                         else solveErrors(data);
@@ -333,7 +184,8 @@ $(function(){ //ready function
 
 function refreshBoard(){
     oServer.getData('players/board/<privateUuid>', oClient, function(data) {
-        if (data.status == undefined) {
+        if (data.status === 200) {
+            data = data.responseJSON;
             colorFormats = ['dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset', 'inherit'];
             
             //Guardo datos
@@ -352,26 +204,26 @@ function refreshBoard(){
             $("#tblPlayers tbody").html('');
             $("#tblOponent").hide();
             $("#tblOponent tbody").html('');
-            // TODO: $("#tblAttempts tbody").html('');
+            $("#tblAttempts tbody").html('');
             $.each(data['players'], function(index, value){ 
                 tr_html = "<tr id='<HASH>'> <td><div class='userColor'></div></td> <td><ACTIVE><span></span></td> <td><SCORE></td> <td><input type='button' value='Jugar' /></td></tr>";
                 tr_html = tr_html.replace("<HASH>", value['publicUuid']);
-                tr_html = tr_html.replace("<ACTIVE>", (value['numberActivated'] == true) ? "S&iacute;" : "No");
+                tr_html = tr_html.replace("<ACTIVE>", (value['numberActivated'] == true) ? "S&iacute;" + ((typeof oClient.numbers[value['numberId']] === 'object') ? " (" + oClient.numbers[value['numberId']].length + ")" : "" ) : "No");
                 tr_html = tr_html.replace("<SCORE>", value['score']);
                 
-                
-
                 if (!value['numberActivated'] && value['publicUuid'] == oClient.getGuessingToID()) oClient.setGuessingToID('');
-                
                 if (value['publicUuid'] == oClient.getGuessingToID()){ //Si encuentro al que estoy adivinando entonces lo cargo en el div de oponente, sino en la lista
                     $("#tblOponent").show();
                     $("#tblOponent tbody").html(tr_html);
                     $("#" + value['publicUuid'] + " td:last-child").remove();
                 
-                    // TODO: Cargar lista de intentos en base al hash del number:  value['numberId'] 
-                    // $("#tblAttempts").html
-                    // attempt_tr_html ="<tr> <td><NUMBER></td> <td><CORRECT_CHARS></td> <td><EXISTING_CHARS></td> <td><WRONG_CHARS></td> </tr>";
-                    
+                    var tries = oClient.numbers[value['numberId']];
+                    if (tries != undefined && typeof tries != 'string'){ //Si es string es porque yo guarde el valor del numero para el hash ese
+                        $.each(tries, function(index, tried){
+                            attempt_tr_html = " <tr> <td>"  + tried['number'] + "</td> <td>" + tried['correctChars'] + "</td> <td>" + tried['existingChars'] + "</td> <td>" + tried['wrongChars'] + "</td> </tr>";
+                            $("#tblAttempts tbody").append(attempt_tr_html);
+                        });
+                    }
                 }
                 else {
                     $("#tblPlayers tbody").append(tr_html);
@@ -386,28 +238,31 @@ function refreshBoard(){
                             $("#" + value['publicUuid'] + " td:last-child").remove();
                             $("#tblOponent").show();
                             $("#tblOponent tbody").html($("#" + value['publicUuid']));
-                            $("#" + value['publicUuid']).hide();
                             $("#divOponent *").removeAttr("disabled");
                             $("#txtGuessNumber").focus();
                             $("#txtGuessNumber").val('');
-                            $("#" + value['publicUuid']).fadeIn(ANIMATE_SLOW, function() { refreshBoard(); });
-                            // TODO: cargar lista de intentos pero aca animadamente. value['numberId'] 
                             
-                            // TODO: Hacer Fadeout de la lista y luego fadein con los nuevos atributos ARRIBA DE ESTO (Refreshboard))
-                            
+                            var tries = oClient.numbers[value['numberId']];
+                            $("#tblAttempts tbody").html('');
+                            if (tries != undefined && typeof tries != 'string'){ //Si es string es porque yo guarde el valor del numero para el hash ese
+                                $.each(tries, function(index, tried){
+                                    attempt_tr_html =" <tr> <td>"  + tried['number'] + "</td> <td>" + tried['correctChars'] + "</td> <td>" + tried['existingChars'] + "</td> <td>" + tried['wrongChars'] + "</td> </tr>";
+                                    $("#tblAttempts tbody").append(attempt_tr_html);
+                                });
+                            }
+                            $("#" + value['publicUuid'] + ", #tblAttempts").hide().fadeIn(ANIMATE_SLOW, function() { refreshBoard(); });
                         });                           
                     });
                 }      
-                if (value['numberActivated'] && false ){ //Si tiene numero activo y si compruebo (TODO: REPLACE) coincidencia de hash entonces es adivinable: 
+                if (value['numberActivated'] &&  (typeof oClient.numbers[value['numberId']] === 'string')){ 
                     $("#" + value['publicUuid'] + " span").css({'color': 'blue', 'text-decoration': 'underline', 'cursor': 'pointer', 'margin-left': '10px'});
-                    $("#" + value['publicUuid'] + " span").html('1234') //TODO: REEMPLEZAR POR EL NUMERO QUE ES !
+                    $("#" + value['publicUuid'] + " span").html(oClient.numbers[value['numberId']])
                     $("#" + value['publicUuid'] + " span").click(function () {
-                        oServer.getData('play/guessnumber/<privateUuid>/' + value['publicUuid'] + '/' + '1234', oClient, function(data) { refreshBoard(); }); //TODO: REEMPLEZAR POR EL NUMERO QUE ES !
+                        oServer.getData('play/guessnumber/<privateUuid>/' + value['publicUuid'] + '/' + oClient.numbers[value['numberId']], oClient, function(data) { refreshBoard(); });
                         oClient.setAttempts(oClient.getAttempts()+1);
                         $("#txtGuessNumber").focus();
                     });
                 } 
-                
                 // Doy estilos para la imagen de cada usuario
                 num = value['publicUuid'].substring(0,1);
                 num = num.replace('a', '8').replace('b', '7').replace('c', '6').replace('d', '5').replace('e', '4').replace('f', '3').replace('9', '2');
@@ -421,6 +276,7 @@ function refreshBoard(){
                 $("#divOponent *").attr("disabled", 'disabled');
             }
             else $("#divOponent *").removeAttr("disabled");
+            $("#txtGuessNumber").focus();
         }
         else solveErrors(data);
     });
@@ -479,6 +335,7 @@ function validateForm(form){
 
 function solveErrors(data){
     errorNumber = data.status;
+    data = data.responseJSON;
     message = data['message'];
     
     switch (errorNumber){
@@ -524,10 +381,7 @@ function solveErrors(data){
         case ERRCODE_INTERVAL_NOT_EXPIRED: //Minimum interval between attempts was not expired.
             $("#frmGuessNumber .result span").html("No se dejo pasar el tiempo de espera");
             $("#frmGuessNumber .result").slideDown(ANIMATE_SLOW);
-            
-            // PREGUNTAR: alert(data['message']);
-            
-            oClient.setInterval(1500);//oClient.setInterval(data['timeToNextAttemp']);
+            oClient.setInterval(data['timeToNextAttemp']);
             break;
             
         case ERRCODE_ALREADY_HAS_NUMBER: // Already active number

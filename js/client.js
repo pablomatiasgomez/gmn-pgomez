@@ -5,6 +5,7 @@ var Client = function() {
     var number;
     var guessingToID = '';
     var attempts = 0;
+    var timerEnabled = false;
     var nextAttempt = new Date().getTime();
     var guessTimer;
     
@@ -48,6 +49,20 @@ var Client = function() {
         return attempts;
     }
     
+    var startRefreshTimer = function(callback, interval) {
+        timerEnabled = true;
+        setTimeout(function(){
+            if (timerEnabled){
+                callback();
+                startRefreshTimer(callback, interval);
+            }
+        }, interval);
+    }
+    
+    var stopRefreshTimer = function(){
+        timerEnabled = false;
+    }
+    
     var checkPreviousNumbers = function(value) {
         return (numbersSetted.indexOf(value) != -1);
     }
@@ -71,10 +86,21 @@ var Client = function() {
             clearTimeout(guessTimer);
     }
     
-    var addTry = function(){
+    var addTry = function(numberId, number, correctChars, existingChars, wrongChars){
+        if (numbers[numberId] === undefined) numbers[numberId] = [];
+        if (typeof numbers[numberId] != 'string'){
+            numbers[numberId].push({
+                "number": number,
+                "correctChars": correctChars,
+                "existingChars": existingChars,
+                "wrongChars": wrongChars
+            });
+        }
         
-        
-        
+        if (correctChars == 4){ // Adivne el numero !!
+            guessingToID = '';
+            numbers[numberId] = number.toString();
+        }   
     }
 
     return {
@@ -88,78 +114,14 @@ var Client = function() {
         "getGuessingToID": getGuessingToID,
         "setAttempts": setAttempts,
         "getAttempts": getAttempts,
+        "startRefreshTimer": startRefreshTimer,
+        "stopRefreshTimer": stopRefreshTimer,
         "checkPreviousNumbers": checkPreviousNumbers,
         "setInterval": setInterval,
         "timeToWait": timeToWait,
         "setGuessTimer": setGuessTimer,
         "clearGuessTimer": clearGuessTimer,
         "numbers": numbers,
-        "addTry": addTry,
-    }
-};
-
-
-    
-var Number = function(){
-    //varibles
-    var num = 0;
-    
-    var setNum = function(value) {
-        num = value;
-    }
-    var getNum = function() {
-        return num;
-    }     
-    
-    var attempts = []; // Array: [Attempt()];    PREGUNTAR ESTO COMO HACERLO BIEN.
-    
-    return {
-        "setNum": setNum,
-        "getNum": getNum,
-        "attempts": attempts,
-    }
-};
-
-var Attempt = function () {
-    //varibles
-    var number;
-    var correct;
-    var existing;
-    var wrong;
-    
-    var setNumber = function(value) {
-        number = value;
-    }
-    var getNumber = function() {
-        return number;
-    }     
-    var setCorrect = function(value) {
-        correct = value;
-    }
-    var getCorrect = function() {
-        return correct;
-    }      
-    var setExisting = function(value) {
-        existing = value;
-    }
-    var getExisting = function() {
-        return existing;
-    }      
-    var setWrong = function(value) {
-        wrong = value;
-    }
-    var getWrong = function() {
-        return wrong;
-    }       
-    
-    return {
-        "setNumber": setNumber,
-        "getNumber": getNumber,
-        "setCorrect": setCorrect,
-        "getCorrect": getCorrect,
-        "setExisting": setExisting,
-        "getExisting": getExisting,
-        "setWrong": setWrong,
-        "getWrong": getWrong,
+        "addTry": addTry
     }
 };

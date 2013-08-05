@@ -11,15 +11,9 @@
 preguntas a hacer:
     validacion con w3 errores de ISO y etc...
 
-    TODO: setTimeOut ( rellamandola para problemas de sincronia)   haceer timerrrrr 1000ms
-    TODO: Hacer metodos en cliente y server ṕara cada accion.. !!!
-
+    TODO: Hacer metods en cliente y server ?ara cada accion.. !!!
+    TODO: var oserver = server({"a": "a"}); options
     ERROR EN LA DOCUMENTACION GUESSNUMBER DEVUELVE ID DEL NUMBER DEL TIP; NO DEL TRIED
-
-
-var oserver = server({"a": "a"});
-options
-
 
 */
 
@@ -30,6 +24,7 @@ FORM_SERVER = 1;
 FORM_USER = 2;
 FORM_NUMBER = 3;
 
+CODE_STATUS_OK = 200;
 ERRCODE_USER_ALREADY_REGISTERED = 520;
 ERRCODE_PRIVATE_UUID_NOT_FOUND = 521;
 ERRCODE_ALREADY_HAS_NUMBER = 523; 
@@ -39,6 +34,8 @@ ERRCODE_PUBLIC_UUID_NOT_FOUND = 526
 ERRCODE_PUBLIC_UUID_NO_ACTIVE_NUMBER = 527;
 ERRCODE_INVALID_NUMBER = 528;
 ERRCODE_GUESSING_OWN_NUMBER = 529;
+
+REFRESH_INTERVAL = 1500;
 
 var canGuess = true;
 
@@ -65,7 +62,6 @@ $(function(){ //ready function
             $("#btnGuess").removeAttr("disabled");   
         }
         else $("#btnGuess").attr('disabled', 'disabled');         
-        
         if (event.keyCode === KEY_ENTER) $("#btnGuess").click();
     });
     
@@ -96,7 +92,7 @@ $(function(){ //ready function
         if (validateForm(FORM_USER)){
             $("#divUser .result").slideUp(ANIMATE_FAST);
             oServer.getData('players/register/' + $("#txtUser").val(), oClient, function(data) {
-                if (data.status === 200){
+                if (data.status === CODE_STATUS_OK){
                     data = data.responseJSON;
                     oClient.setName(data['name']);
                     oClient.setPrivateID(data['privateUuid']); //Guardo datos
@@ -118,10 +114,11 @@ $(function(){ //ready function
             else {
                 $("#divNumber .result").slideUp(ANIMATE_FAST);
                 oServer.getData('play/setnumber/<privateUuid>/' + $("#txtNumber").val(), oClient, function(data) {
-                    if (data.status === 200){
+                    if (data.status === CODE_STATUS_OK){
                         data = data.responseJSON;
                         oClient.setNumber(data['number']); // Guardo datos
                         $("#divNumber").fadeOut(ANIMATE_FAST, function(){ $("#divMain").fadeIn(ANIMATE_FAST, function() { refreshBoard(); } )});   //Muestro siguiente form
+                        oClient.startRefreshTimer(refreshBoard, REFRESH_INTERVAL);
                     }
                     else solveErrors(data);  
                 });
@@ -142,28 +139,15 @@ $(function(){ //ready function
                 var timer = setTimeout(function(){
                     oServer.getData('play/guessnumber/<privateUuid>/<publicUuid>/' + $("#txtGuessNumber").val(), oClient, function(data) {
                         canGuess = true;
-                        if (data.status === 200){  
+                        if (data.status === CODE_STATUS_OK){  
                             data = data.responseJSON;
-                            oClient.setInterval(0);//oClient.setInterval(data['timeToNextAttemp']); // Guardo intervalo para no ejercutar el proximo antes.
+                            oClient.setInterval(data['timeToNextAttemp']);// Guardo intervalo para no ejercutar el proximo antes.
                             oClient.clearGuessTimer();
+                            oClient.addTry(data['numberId'], data['number'], data['correctChars'], data['existingChars'], data['wrongChars']);
                             
-                            if (oClient.numbers[data['numberId']] === undefined) oClient.numbers[data['numberId']] = [];
-                            if (typeof oClient.numbers[data['numberId']] != 'string'){
-                                oClient.numbers[data['numberId']].push({
-                                    "number": data['number'],
-                                    "correctChars": data['correctChars'],
-                                    "existingChars": data['existingChars'],
-                                    "wrongChars": data['wrongChars'],
-                                });
-                            }
                             tr_html =" <tr> <td>"  + data['number'] + "</td> <td>" + data['correctChars'] + "</td> <td>" + data['existingChars'] + "</td> <td>" + data['wrongChars'] + "</td> </tr>";
                             $("#tblAttempts tbody").append(tr_html).hide().fadeIn(ANIMATE_FAST);
-                            
-                            if (data['correctChars'] == 4){ // Adivne el numero !!
-                                oClient.setGuessingToID('');
-                                oClient.numbers[data['numberId']] = data['number'].toString();
-                                $("#tblOponent").fadeOut(ANIMATE_SLOW, function(){ refreshBoard(); });
-                            }   
+                            if (data['correctChars'] == 4) $("#tblOponent, #tblAttempts tbody").fadeOut(ANIMATE_SLOW, function(){ refreshBoard(); });
                             $("#txtGuessNumber").focus();
                         }
                         else solveErrors(data);
@@ -184,12 +168,13 @@ $(function(){ //ready function
 
 function refreshBoard(){
     oServer.getData('players/board/<privateUuid>', oClient, function(data) {
-        if (data.status === 200) {
+        if (data.status === CODE_STATUS_OK) {
             data = data.responseJSON;
             colorFormats = ['dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset', 'inherit'];
             
             //Guardo datos
             if (!data['me'][0]['numberActivated']) {
+                oClient.stopRefreshTimer();
                 $("li#number").html("<u>N&uacute;mero</u>: No seteado");
                 $("#txtNumber").val('');
                 $("#divMain").fadeOut(ANIMATE_FAST, function(){ $("#divNumber").fadeIn(ANIMATE_FAST, function(){ $("#txtNumber").focus(); })});
@@ -258,8 +243,15 @@ function refreshBoard(){
                     $("#" + value['publicUuid'] + " span").css({'color': 'blue', 'text-decoration': 'underline', 'cursor': 'pointer', 'margin-left': '10px'});
                     $("#" + value['publicUuid'] + " span").html(oClient.numbers[value['numberId']])
                     $("#" + value['publicUuid'] + " span").click(function () {
-                        oServer.getData('play/guessnumber/<privateUuid>/' + value['publicUuid'] + '/' + oClient.numbers[value['numberId']], oClient, function(data) { refreshBoard(); });
-                        oClient.setAttempts(oClient.getAttempts()+1);
+                        oServer.getData('play/guessnumber/<privateUuid>/' + value['publicUuid'] + '/' + oClient.numbers[value['numberId']], oClient, function(data) { 
+                            if (data.status === CODE_STATUS_OK){  
+                                data = data.responseJSON;
+                                oClient.setInterval(data['timeToNextAttemp']);
+                                refreshBoard(); 
+                            }
+                            else solveErrors(data);
+                        });
+                        oClient.setAttempts(oClient.getAttempts() + 1);
                         $("#txtGuessNumber").focus();
                     });
                 } 
@@ -276,6 +268,7 @@ function refreshBoard(){
                 $("#divOponent *").attr("disabled", 'disabled');
             }
             else $("#divOponent *").removeAttr("disabled");
+            $("#txtGuessNumber").keyup();
             $("#txtGuessNumber").focus();
         }
         else solveErrors(data);
@@ -340,6 +333,7 @@ function solveErrors(data){
     
     switch (errorNumber){
         case ERRCODE_PRIVATE_UUID_NOT_FOUND: //Private Uuid not found
+            oClient.stopRefreshTimer();
             $("#txtNumber").val('');
             $("#txtUser").val('');
             $("#divMain, #divNumber").fadeOut(ANIMATE_FAST, function(){ $("#divUser").fadeIn(ANIMATE_FAST, function(){ $("#txtUser").focus(); })});
@@ -351,16 +345,14 @@ function solveErrors(data){
         case ERRCODE_PUBLIC_UUID_NOT_FOUND: //Public UUID is was not found.
             $("#frmGuessNumber .result span").html("Contrincante no encontrado.");
             $("#frmGuessNumber .result").slideDown(ANIMATE_SLOW);
-            // Actualizo toda la board porque se elimino el usuario
-            oClient.setGuessingToID('');
+            oClient.setGuessingToID(''); // Actualizo toda la board porque se elimino el usuario
             refreshBoard(); 
             break;
             
         case ERRCODE_GUESSING_OWN_NUMBER: //User tries to guess his own number.
             $("#frmGuessNumber .result span").html("Adivinando numero propio.");
             $("#frmGuessNumber .result").slideDown(ANIMATE_SLOW);
-            // Actualizo toda la board porque algo surgio mal
-            oClient.setGuessingToID('');
+            oClient.setGuessingToID(''); // Actualizo toda la board porque algo surgio mal
             refreshBoard();
             break;
             
@@ -398,12 +390,11 @@ function solveErrors(data){
             break;
             
         case ERRCODE_PRIVATE_UUID_NO_ACTIVE_NUMBER: //Private UUID has no active number.
-            refreshBoard(); //Solo hago refresh board ya que dicha funcion se encarga de verficiar si no tengo numero y hace todo el proceso
+            refreshBoard(); //Solo hago refresh board ya que dicha funcion se encarga de verficiar si no tengo numero y hace el proceso
             break;
             
         default:
             alert ('Error desconocido. Nro: ' + errorNumber + "<br /> Message: " + message);
-            break;   
     }
 }
 

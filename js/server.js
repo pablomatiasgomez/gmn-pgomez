@@ -6,7 +6,7 @@ var Server = function() {
         url = value;
     }
     
-    getData = function(subUrl, oClient, callback){
+    var getData = function(subUrl, oClient, callback) {
         subUrl = subUrl.replace("<privateUuid>", oClient.getPrivateID());
         subUrl = subUrl.replace("<publicUuid>", oClient.getGuessingToID());
 
@@ -16,12 +16,12 @@ var Server = function() {
             dataType:"json",
             complete: function(data) {
                 callback(data);
-            },
-        })
+            }
+        });
     }
   
     return {
         "setUrl": setUrl,
-        "getData": getData,
+        "getData": getData
     }
 };

@@ -9,7 +9,6 @@
         <script type="text/javascript" src="js/jquery.color-2.1.2.min.js"></script>
         <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 
-        
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/client.js"></script>
         <script type="text/javascript" src="js/functions.js"></script>
@@ -17,7 +16,7 @@
         <meta name="keywords" content="Guess, Number, Game, Adivinar, Juego, Numero" />
         <meta name="description" content="A game to guess numbers" />
         <meta name="author" content="Gomez Pablo Matias" />
-        <meta charset="iso-8859-1" />
+        <meta charset="UTF-8" />
 	</head>
 	<body>
         <div id="divData" tabindex="-1">
@@ -35,6 +34,7 @@
         
         <div id="container">
             <h1>Guess My Number</h1>
+            
             <!-- Formulario correspondiente al primer paso (ingresar los datos para realizar una conexion al servidor) --> 
             <div id="divServer" class="initForm">
         		<h2>Ingresar datos del servidor</h2>
@@ -50,7 +50,6 @@
         		</div>
             </div>
     
-            
             <!-- Formulario correspondiente al segundo paso (ingresar nombre de usuario) --> 
             <div id="divUser" class="initForm">
         		<h2>Ingresar nombre de usuario</h2>
@@ -78,8 +77,10 @@
         		</div>
             </div>
             
+            <!-- Formulario correspondiente a la pantalla principal de juego --> 
             <div id="divMain">
                 <h2>Contrincante</h2>
+                <!-- Formulario correspondiente a donde se muestra el oponente actual --> 
                 <div id="divOponent">
                     <table id="tblOponent">
                         <thead>
@@ -94,6 +95,7 @@
                     </table>
                     <hr />
                     
+                    <!-- Formulario correspondiente a donde se muestra el input para intentar adivinar numero --> 
                     <h3>Adivinar n&uacute;mero</h3>
                     <div id="frmGuessNumber">
                         <label for="txtGuessNumber">N&uacute;mero:</label><input id="txtGuessNumber" type="text" title="Ingrese el numero a adivinar" maxlength="4" />
@@ -104,6 +106,7 @@
                     </div>
                     <hr />
                     
+                    <!-- Formulario correspondiente a donde se muestra una tabla con los intentos realizados a dicho numero --> 
                     <h3>Intentos realizados</h3>
                     <div id="divAttempts">
                         <table id="tblAttempts">
@@ -121,6 +124,7 @@
                     </div>
                 </div>
                 
+                <!-- Formulario correspondiente a la tabla de jugadores actuales --> 
                 <div id="divPlayers">
                     <h2>Lobby</h2>
                     <input id="btnRefreshLobby" type="button" value="Refresh" />
@@ -133,8 +137,7 @@
                                 <th>Jugar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>

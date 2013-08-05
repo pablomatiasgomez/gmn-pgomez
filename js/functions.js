@@ -70,11 +70,11 @@ $(function(){ //ready function
             $("#divServer .result").slideUp(ANIMATE_FAST);
             $.ajax({
                 type: 'GET',
-                url: "http://" +  $("#txtServer").val() + ((parseInt($("#txtPort").val()) === 80) ? '' : $("#txtPort").val()) + "/version",
+                url: "http://" +  $("#txtServer").val() + ((parseInt($("#txtPort").val()) === 80) ? '' : ':' + $("#txtPort").val()) + "/version",
                 dataType:"json",
                 success: function(data){
                     if (data['version']) {
-                        oServer.setUrl("http://" +  $("#txtServer").val() + ((parseInt($("#txtPort").val()) === 80) ? '' : $("#txtPort").val()) + "/"); //Guardo datos del servidor
+                        oServer.setUrl("http://" +  $("#txtServer").val() + ((parseInt($("#txtPort").val()) === 80) ? '' : ':' + $("#txtPort").val()) + "/"); //Guardo datos del servidor
                         $("#divServer").fadeOut(ANIMATE_FAST, function(){ $("#divUser").fadeIn(ANIMATE_FAST, function(){ $("#txtUser").focus(); })}); //Muestro siguiente form
                     }
                 },

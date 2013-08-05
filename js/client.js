@@ -15,6 +15,8 @@ var Client = function() {
     
     var setName = function(value) {
         name = value;
+        attempts = 0;
+        number = '';
         $("li#user").html("<u>Usuario</u>: " + value);
     }
     var getName = function() {
@@ -30,7 +32,7 @@ var Client = function() {
     var setNumber = function(value) {
         numbersSetted.push(value.toString());
         number = value;
-        $("li#number").html("<u>N&uacute;mero</u>: " + value);
+        $("li#number").html("<u>N&uacute;mero</u>: <span title='" + value + "'>****</span>");
     }
     var getNumber = function() {
         return number;

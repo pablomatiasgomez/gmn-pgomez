@@ -42,47 +42,6 @@
                     success: function(data) {
                         $("tbody").html('');
                         $.each(data['players'], function(index, value){ 
-
-                            <tr>
-<td rowspan='5'>nombre</td>
-<td rowspan='5'>23.4.2.3.4.23</td>
-<td rowspan='5'>Yes</td>
-<td rowspan='5'>34:34:34</td>
-<td rowspan='5'>56:56:56</td>
-<td rowspan='5'>456</td>
-<td rowspan='5'>45.67</td>
-<td rowspan='5'>344</td>
-<td rowspan='5'>234</td>
-<td rowspan='5'>234</td>
-<td>Seted</td><td>22</td><td>-5000</td>
-</tr>
-<tr>
-<td>Guessed</td><td>22</td><td>-5000</td>
-</tr>
-<tr>
-<td>Tries Made</td><td>22</td><td>-5000</td>
-</tr>
-<tr>
-<td>Tries Received</td><td>22</td><td>-5000</td>
-</tr>
-<tr>
-<td>Wasted Requests</td><td>22</td><td>-5000</td>
-</tr>
-
-                            html = "<td rowspan='5'>" + value['name'] + "</td>";            
-
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-                            html += "<td rowspan='5'>" + value[''] + "</td>";
-
-
-
-
                             html= "<tr> <td rowspan='5'><NAME></td> <td rowspan='5'><PRIVID></td> <td rowspan='5'><PUBID></td> <td rowspan='5'><NUMBER> (<NUMBERID>)</td> <td rowspan='5'><ACTIVE></td> <td rowspan='5'><SCORE></td> ";
                             html = html.replace("<NAME>", value['name']);
                             html = html.replace("<PRIVID>", value['privateUuid']);

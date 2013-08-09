@@ -37,14 +37,6 @@ $(function(){ //ready function
         $("#divData").css("top", $(window).height() - 200);
     });
     
-    oServer.setUrl("http://gmn.despegar.net/"); //Guardo datos del servidor
-            
-
-    
-    
-    setName();
-    
-    setNumber();
     
     
     
@@ -90,6 +82,24 @@ $(function(){ //ready function
 
 // FUNCTIONS:
 
+function process(){
+    
+    
+    
+    
+    oServer.setUrl("http://gmn.despegar.net/"); //Guardo datos del servidor
+
+    setName();
+    
+    setNumber();
+    
+    
+    
+    
+    
+    
+    
+}
 function guessTimer(){
     alert('');
     setTimeout(function() { 
@@ -152,7 +162,6 @@ function setName(){
             
         }
         else solveErrors(data.status, data['message']); 
-
     });
 }
 

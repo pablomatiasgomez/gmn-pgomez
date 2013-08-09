@@ -40,8 +40,9 @@ REFRESH_INTERVAL = 1500;
 var canGuess = true;
 
 $(function(){ //ready function 
-    oClient = Client();
     oServer = Server();
+    oClient = Client();
+    
     
     $("#divServer").show();
     $("#txtServer").focus();
@@ -140,6 +141,7 @@ $(function(){ //ready function
                     oServer.getData('play/guessnumber/<privateUuid>/<publicUuid>/' + $("#txtGuessNumber").val(), oClient, function(data) {
                         canGuess = true;
                         if (data.status === CODE_STATUS_OK){  
+                            window.scrollTo(0,document.body.scrollHeight);
                             data = data.responseJSON;
                             oClient.setInterval(data['timeToNextAttemp']);// Guardo intervalo para no ejercutar el proximo antes.
                             oClient.clearGuessTimer();
@@ -189,9 +191,9 @@ function refreshBoard(){
             $("#tblPlayers tbody").html('');
             $("#tblOponent").hide();
             $("#tblOponent tbody").html('');
-            $("#tblAttempts tbody").html('');
+            $("#tblAttempts tbody").html('').show();
             $.each(data['players'], function(index, value){ 
-                tr_html = "<tr id='<HASH>'> <td><div class='userColor'></div></td> <td><ACTIVE><span></span></td> <td><SCORE></td> <td><input type='button' value='Jugar' /></td></tr>";
+                tr_html = "<tr id='<HASH>'> <td><div class='userColor'></div></td> <td><ACTIVE><span></span></td> <td><SCORE></td> <td>  <button> <img src='images/icons/play.ico' />  Jugar</button></td></tr>";
                 tr_html = tr_html.replace("<HASH>", value['publicUuid']);
                 tr_html = tr_html.replace("<ACTIVE>", (value['numberActivated'] == true) ? "S&iacute;" + ((typeof oClient.numbers[value['numberId']] === 'object') ? " (" + oClient.numbers[value['numberId']].length + ")" : "" ) : "No");
                 tr_html = tr_html.replace("<SCORE>", value['score']);
@@ -212,9 +214,9 @@ function refreshBoard(){
                 }
                 else {
                     $("#tblPlayers tbody").append(tr_html);
-                    if(!value['numberActivated']) $("#" + value['publicUuid'] + " input[type='button']").attr('disabled', 'disabled').hide();
+                    if(!value['numberActivated']) $("#" + value['publicUuid'] + " button").attr('disabled', 'disabled').hide();
 
-                    $("#" + value['publicUuid'] + " input[type='button']").click(function () {
+                    $("#" + value['publicUuid'] + " button").click(function () {
                         // Si tiene contrincante activo entonces:
                         if (oClient.getGuessingToID() != '')  $("#" + oClient.getGuessingToID()).fadeOut(ANIMATE_FAST);
                            
@@ -231,7 +233,7 @@ function refreshBoard(){
                             $("#tblAttempts tbody").html('');
                             if (tries != undefined && typeof tries != 'string'){ //Si es string es porque yo guarde el valor del numero para el hash ese
                                 $.each(tries, function(index, tried){
-                                    attempt_tr_html =" <tr> <td>"  + tried['number'] + "</td> <td>" + tried['correctChars'] + "</td> <td>" + tried['existingChars'] + "</td> <td>" + tried['wrongChars'] + "</td> </tr>";
+                                    attempt_tr_html = " <tr> <td>"  + tried['number'] + "</td> <td>" + tried['correctChars'] + "</td> <td>" + tried['existingChars'] + "</td> <td>" + tried['wrongChars'] + "</td> </tr>";
                                     $("#tblAttempts tbody").append(attempt_tr_html);
                                 });
                             }

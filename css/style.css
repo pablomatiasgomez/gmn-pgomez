@@ -21,7 +21,7 @@ input[type="text"]:focus{
 
 h1 {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
     color: #227722;
 }
 
@@ -31,6 +31,8 @@ h2 {
 
 h3 {
     font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 10px;
 }
 
 label {
@@ -136,7 +138,7 @@ table {
         display: none;
     }
         .initForm .form {
-            border: 1.5px dashed;
+            border: 2px dashed;
             margin: 10px;
             padding: 10px;
             background-color: #C8E6B4;
@@ -168,7 +170,7 @@ table {
     #divMain .userColor {
         border-color: yellow green blue red;
         border-style:solid;
-        border-width:12px;
+        border-width:11px;
         width:0;
         height:0;
         margin: 3px 3px 3px 26px;
@@ -177,13 +179,13 @@ table {
 
     #divOponent {
         float: left;
-        width: 330px;
+        width: 315px;
         border-radius: 5px;
         border: 2px dashed;
         padding: 15px;
         margin-left: 15px;
         margin-bottom: 15px;
-        box-shadow: 0 0 4px 3px #AAAAAA;
+        box-shadow: 2px 5px 4px 4px #AAAAAA;
         background: rgba(255,255,255,0.5);
     }
     
@@ -206,7 +208,7 @@ table {
         #divOponent #frmGuessNumber {
             border: 1.5px dashed;
             margin: 10px;
-            padding: 10px;
+            padding: 3px 20px;
             background-color: #C8E6B4;
             overflow: auto;
             border-radius: 10px;
@@ -217,7 +219,7 @@ table {
             margin: 3px;
             padding: 3px;
             border: 1px solid black;
-            width: 110px;
+            width: 100px;
         }
         
         #tblAttempts {
@@ -226,7 +228,7 @@ table {
             width: 100%;
             margin: 5px;
             padding: 5px;
-            font-size: 14px;
+            font-size: 13px;
         }
             #tblAttempts td, #tblAttempts th{
                 border: 1px solid black;
@@ -250,8 +252,12 @@ table {
             width: 95%;
             border-radius: 10px;
             margin-bottom: 10px;
+            background: rgba(200, 230, 180, 0.6);
         }
-            
+            #tblPlayers button img {
+                margin: -2px;
+            }
+        
             #tblPlayers td, #tblPlayers th{
                 border: 1px solid black;
                 text-align: center;

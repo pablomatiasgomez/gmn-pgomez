@@ -1,11 +1,15 @@
+      ////////////OBJECT SERVER////////////
+     //*********************************//
+    //         Gomez Pablo Matias      //
+   //         July 2013               //
+  //                                 //
+ //*********************************//
+/////////////////////////////////////
+
 var Server = function() {
     //variables privadas
     var url = "";
-    
-    var setUrl = function(value) {
-        url = value;
-    }
-    
+
     var getData = function(subUrl, callback) {
 
         $.ajax({
@@ -53,7 +57,6 @@ var Server = function() {
     }
     
     return {
-        "setUrl": setUrl,
         "registerUser": registerUser,
         "setNumber": setNumber,
         "guessNumber": guessNumber,

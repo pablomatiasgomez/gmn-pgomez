@@ -1,3 +1,11 @@
+      ////////////OBJECT CLIENT////////////
+     //*********************************//
+    //         Gomez Pablo Matias      //
+   //         July 2013               //
+  //                                 //
+ //*********************************//
+/////////////////////////////////////
+
 var Client = function(server) {
     //variables privadas
     var oServer = server;
@@ -32,6 +40,43 @@ var Client = function(server) {
     ERRCODE_GUESSING_OWN_NUMBER = 529;
     
     REFRESH_INTERVAL = 1500;
+
+    var getPrivateID = function() {
+        return privateID;
+    }
+    
+    var addAttempt = function() {
+        attempts++;
+        $("li#attempts").html("<u>Intentos</u>: " + attempts);
+    }
+    
+    var startRefreshTimer = function(callback, interval) {
+        timerEnabled = true;
+        setTimeout(function(){
+            if (timerEnabled){
+                callback();
+                startRefreshTimer(callback, interval);
+            }
+        }, interval);
+    }
+    
+    var stopRefreshTimer = function(){
+        timerEnabled = false;
+    }
+    
+    var setInterval = function(value) {
+        nextAttempt = new Date().getTime();
+        nextAttempt += value ;
+    }
+    
+    var timeToWait = function (){
+        now = new Date().getTime();
+        return (nextAttempt - now);   
+    }
+    
+    var checkPreviousNumbers = function(value) {
+        return (numbersSetted.indexOf(value) != -1);
+    }
 
     var setServer = function(IP, PORT){
         if (validateForm(FORM_SERVER)){
@@ -69,11 +114,7 @@ var Client = function(server) {
             });
         }
     }
-    
-    var getPrivateID = function() {
-        return privateID;
-    }
-    
+
     var setNumber = function(value) {
         if (validateForm(FORM_NUMBER)){
             if (checkPreviousNumbers(value)) {
@@ -99,12 +140,7 @@ var Client = function(server) {
             }
         }
     }
-    
-    var addAttempt = function() {
-        attempts++;
-        $("li#attempts").html("<u>Intentos</u>: " + attempts);
-    }
-    
+
     var guessNumber = function(value){
         if (canGuess === false) return;
         canGuess = false; // No permito que apriete el boton si previamente se apreto el boton y se esta esperando respuesta del servidor 
@@ -242,35 +278,6 @@ var Client = function(server) {
             else solveErrors(data);
         });
     }
-    
-    var startRefreshTimer = function(callback, interval) {
-        timerEnabled = true;
-        setTimeout(function(){
-            if (timerEnabled){
-                callback();
-                startRefreshTimer(callback, interval);
-            }
-        }, interval);
-    }
-    
-    var stopRefreshTimer = function(){
-        timerEnabled = false;
-    }
-    
-    var setInterval = function(value) {
-        nextAttempt = new Date().getTime();
-        nextAttempt += value ;
-    }
-    
-    var timeToWait = function (){
-        now = new Date().getTime();
-        return (nextAttempt - now);   
-    }
-    
-    var checkPreviousNumbers = function(value) {
-        return (numbersSetted.indexOf(value) != -1);
-    }
-    
 
     var addTry = function(numberId, number, correctChars, existingChars, wrongChars){
         if (numbers[numberId] === undefined) numbers[numberId] = [];

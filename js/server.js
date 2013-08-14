@@ -6,9 +6,7 @@ var Server = function() {
         url = value;
     }
     
-    var getData = function(subUrl, oClient, callback) {
-        subUrl = subUrl.replace("<privateUuid>", oClient.getPrivateID());
-        subUrl = subUrl.replace("<publicUuid>", oClient.getGuessingToID());
+    var getData = function(subUrl, callback) {
 
         $.ajax({
             type: 'GET',
@@ -19,9 +17,47 @@ var Server = function() {
             }
         });
     }
+    
+    var tryServer = function(IP, PORT, callback){
+        $.ajax({
+            type: 'GET',
+            url: "http://" + IP + ((parseInt(PORT) === 80) ? '' : ':' + PORT) + "/version",
+            dataType:"json",
+            success: function(data){
+                if (data['version']) {
+                    url = "http://" +  IP + ((parseInt(PORT) === 80) ? '' : ':' + PORT) + "/"; //Guardo datos del servidor
+                    callback(true)
+                }
+                else callback(false);
+            },
+            error: function() {
+                callback(false)
+            }
+         });
+    }
   
+    var registerUser = function(userName, callback){
+        getData('players/register/' + userName, callback);
+    }
+    
+    var setNumber = function(privateID, number, callback){
+        getData('play/setnumber/' + privateID + '/' + number, callback);  
+    }
+                
+    var guessNumber = function(privateID, publicID, number, callback){
+        getData('play/guessnumber/' + privateID + '/' + publicID + '/' + number, callback);
+    }
+    
+    var requestBoard = function(privateID, callback){
+        getData('players/board/' + privateID, callback);
+    }
+    
     return {
         "setUrl": setUrl,
-        "getData": getData
+        "registerUser": registerUser,
+        "setNumber": setNumber,
+        "guessNumber": guessNumber,
+        "requestBoard": requestBoard,
+        "tryServer": tryServer,
     }
 };

@@ -32,7 +32,8 @@ var Client = function() {
     var setNumber = function(value) {
         numbersSetted.push(value.toString());
         number = value;
-        $("li#number").html("<u>N&uacute;mero</u>: <img src='images/icons/number.ico' title='" + value + "' />");
+        //$("li#number").html("<u>N&uacute;mero</u>: <img src='images/icons/number.ico' title='" + value + "'/>");
+        $("li#number").html("<u>N&uacute;mero</u>: <span title='" + value + "'><img src='images/icons/number.ico' alt='*' /><img src='images/icons/number.ico' alt='*' /><img src='images/icons/number.ico' alt='*' /><img src='images/icons/number.ico' alt='*' /></span>");
     }
     var getNumber = function() {
         return number;

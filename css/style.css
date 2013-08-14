@@ -105,6 +105,10 @@ table {
         box-shadow: 1px 1px 3px 0px #CCCCCC;
     }
     
+        #divData #divTitle img{
+            margin: -2px 0;
+        }
+
     #divData #divContent {
          display: block;
          width: auto; 
@@ -120,9 +124,13 @@ table {
         font-size: 12px;
     }
     
-     #divData #divContent li {
+    #divData #divContent li {
         padding-bottom: 3px;
     }
+    
+        #divData #divContent li#number img {
+            margin: -3px;
+        }   
     
 
 #container {

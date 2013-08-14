@@ -1,14 +1,9 @@
-/*
-      /////////////////////////////////////
-     //******************************** //
-    //         Gomez Pablo Matias      //
-   //         July 2013               //
-  //                                 //
+/*   /////////////////////////////////////
+    //******************************** //
+   //         Gomez Pablo Matias      //
+  //         July 2013               //
  //******************************** //
-/////////////////////////////////////
-
-*/
-
+/////////////////////////////////////  */
 
 body {
     font-family: Tahoma;
@@ -79,9 +74,9 @@ table {
     border: 1px solid #AAAAAA; 
     display: block; 
     z-index: 1005; 
-    height: auto; /*130px; */
+    height: auto;
     min-height: 100px;
-    width: auto; /*280px */
+    width: auto;
     min-width: 200px;
     top: 50px; 
     left: 20px;
@@ -167,8 +162,6 @@ table {
         .initForm input[type="button"] {
             float: right;
         }
-
-
 
 #divMain {
     margin: 0px 110px;

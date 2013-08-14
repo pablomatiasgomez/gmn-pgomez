@@ -1,3 +1,9 @@
+/*   /////////////////////////////////////
+    //******************************** //
+   //         Gomez Pablo Matias      //
+  //         July 2013               //
+ //******************************** //
+/////////////////////////////////////  */
 
 body {
     font-family: Tahoma;
@@ -10,7 +16,7 @@ input[type="text"]:focus{
 
 h1 {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
     color: #227722;
 }
 
@@ -20,6 +26,8 @@ h2 {
 
 h3 {
     font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 10px;
 }
 
 label {
@@ -66,10 +74,12 @@ table {
     border: 1px solid #AAAAAA; 
     display: block; 
     z-index: 1005; 
-    height: 160px; 
-    width: 280px; 
+    height: auto;
+    min-height: 100px;
+    width: auto;
+    min-width: 200px;
     top: 50px; 
-    left: 50px;
+    left: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px 1px #AAAAAA;
     background-color: #FFFFFF;
@@ -90,6 +100,10 @@ table {
         box-shadow: 1px 1px 3px 0px #CCCCCC;
     }
     
+        #divData #divTitle img{
+            margin: -2px 0;
+        }
+
     #divData #divContent {
          display: block;
          width: auto; 
@@ -98,14 +112,20 @@ table {
     
     #divData #divContent ul {
         list-style:none;
-        padding-left: 10px;
-        padding-top: 0;
+        padding-left: 5px;
+        padding-right: 3px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         font-size: 12px;
     }
     
-     #divData #divContent li {
+    #divData #divContent li {
         padding-bottom: 3px;
     }
+    
+        #divData #divContent li#number img {
+            margin: -3px;
+        }   
     
 
 #container {
@@ -143,31 +163,30 @@ table {
             float: right;
         }
 
-
-
 #divMain {
-    margin: 25px 50px 50px;
+    margin: 0px 110px;
     overflow: hidden;
     display: none;
 } 
     #divMain .userColor {
         border-color: yellow green blue red;
         border-style:solid;
-        border-width:15px;
+        border-width:11px;
         width:0;
         height:0;
-        margin-left: 20px;
+        margin: 3px 3px 3px 26px;
+        box-shadow: 0 0 3px 4px #FFFFFF;
     }
 
     #divOponent {
         float: left;
-        width: 330px;
+        width: 315px;
         border-radius: 5px;
         border: 2px dashed;
         padding: 15px;
         margin-left: 15px;
         margin-bottom: 15px;
-        box-shadow: 0 0 4px 3px #AAAAAA;
+        box-shadow: 2px 5px 4px 4px #AAAAAA;
         background: rgba(255,255,255,0.5);
     }
     
@@ -190,7 +209,7 @@ table {
         #divOponent #frmGuessNumber {
             border: 1.5px dashed;
             margin: 10px;
-            padding: 10px;
+            padding: 3px 20px;
             background-color: #C8E6B4;
             overflow: auto;
             border-radius: 10px;
@@ -201,7 +220,7 @@ table {
             margin: 3px;
             padding: 3px;
             border: 1px solid black;
-            width: 110px;
+            width: 100px;
         }
         
         #tblAttempts {
@@ -210,7 +229,7 @@ table {
             width: 100%;
             margin: 5px;
             padding: 5px;
-            font-size: 14px;
+            font-size: 13px;
         }
             #tblAttempts td, #tblAttempts th{
                 border: 1px solid black;
@@ -219,7 +238,7 @@ table {
         
     #divPlayers {
         float: right;
-        width: 350px;
+        width: 300px;
         margin-top: -55px;
     }
         #divPlayers #btnRefreshLobby {
@@ -234,7 +253,12 @@ table {
             width: 95%;
             border-radius: 10px;
             margin-bottom: 10px;
+            background: rgba(200, 230, 180, 0.6);
         }
+            #tblPlayers button img {
+                margin: -2px;
+            }
+        
             #tblPlayers td, #tblPlayers th{
                 border: 1px solid black;
                 text-align: center;

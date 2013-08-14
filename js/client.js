@@ -269,6 +269,7 @@ var Client = function(server) {
                 });
                 if ($("#tblOponent tbody").html() == '') { //No tengo oponente asignado
                     guessingToID = '';
+                    $("#txtGuessNumber").val('');
                     $("#divOponent *").attr("disabled", 'disabled');
                 }
                 else $("#divOponent *").removeAttr("disabled");

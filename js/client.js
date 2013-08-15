@@ -40,10 +40,6 @@ var Client = function(server) {
     
     REFRESH_INTERVAL = 1500;
 
-    var getPrivateID = function() {
-        return privateID;
-    }
-    
     var addAttempt = function() {
         attempts++;
         $("li#attempts").html("<u>Intentos</u>: " + attempts);
@@ -438,15 +434,9 @@ var Client = function(server) {
     return {
         "setServer": setServer,
         "setName": setName,
-        "getPrivateID": getPrivateID,
         "setNumber": setNumber,
         "guessNumber": guessNumber,
-        "startRefreshTimer": startRefreshTimer,
-        "stopRefreshTimer": stopRefreshTimer,
         "validateForm": validateForm,
-        "numbers": numbers,
-        "addTry": addTry,
         "refreshBoard": refreshBoard,
-        
     }
 };

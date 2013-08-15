@@ -1,4 +1,4 @@
-     ////////////OBJECT CLIENT////////////
+     ////////////OBJECT ENGINE////////////
     //*********************************//
    //         Gomez Pablo Matias      //
   //         July 2013               //
@@ -22,7 +22,7 @@ var Engine = function() {
     
     var getRandomName = function(){
         nameNumber++;
-        return ("pgBot" + nameNumber);
+        return ("PabloGomezBot" + nameNumber);
     }
     
     var getRandomNumber = function(){
@@ -155,28 +155,19 @@ var Engine = function() {
     
     var selectUser = function(players){
         var oponent = '';
-        var previousPossibleUser = '';
-        
-        //Cargo lista (ordenada por score de mayor a menor asi elijo al segundo mayor !): (TECNICA: EL PRIMERO QUE PUEDA DE LOS MENORES LO SALTEO PORQUE SEGURO LO ESTAN ADIVINANDO LAS DEMAS PERSONAS)       
-        players.sort(function (a, b){ return ((a['score'] > b['score'] ) ? -1 : ((a['score'] < b['score']) ? 1 : 0)); });
-        skipped = false;
+
+        //Cargo lista (ordenada por score de menor a mayor y termina eligiendo al mayor !): (TECNICA: EL PRIMERO QUE PUEDA DE LOS MENORES LO SALTEO PORQUE SEGURO LO ESTAN ADIVINANDO LAS DEMAS PERSONAS)     
+        players.sort(function (a, b){ return ((a['score'] < b['score'] ) ? -1 : ((a['score'] > b['score']) ? 1 : 0)); });
+  
         $.each(players, function(index, value){ 
             if (value['numberActivated'] == true){
                 if (knowNumber(value['numberId'])){  //Con esto verifico si hay alguno al que ya le conosco el numero
                     oponent = value['publicUuid'];
                     return;
                 } 
-                if (oponent == '') {
-                    if (!skipped){
-                        skipped = true;
-                        previousPossibleUser = value['publicUuid'];
-                    }
-                    else oponent = value['publicUuid'];
-                }
+                oponent = value['publicUuid'];
             }
         });
-        if (oponent == '' && previousPossibleUser != '') oponent = previousPossibleUser;
-        
         return oponent;
     }
     var addTry = function(numberId, number, correctChars, existingChars, wrongChars){

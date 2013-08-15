@@ -112,22 +112,18 @@ var Client = function(server, engine) {
 
                 // Si tengo a alquien a quien adivinarle:
                 var exists = false;
-                var numberID;
                 if (guessingToID != ''){
                     $.each(data['players'], function(index, value){ //Verifico que exista:
                         if (value['publicUuid'] == guessingToID) {
                             if (value['numberActivated'] == true) {
                                 exists = true;
-                                numberID = value['numberId'];
+                                guessNumber(oEngine.getNumberToGuess(value['numberId']));  
                             }
                             else guessingToID = '';
                         }
                     });
                 }
-                if ((exists==true) && (guessingToID != '')){
-                    guessNumber(oEngine.getNumberToGuess(numberID));  
-                } 
-                else {
+                if ((exists==false) || (guessingToID == '')){
                     guessingToID = '';
                     writeLog("No hay oponentes activos");
                     botProcess();

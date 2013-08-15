@@ -1,4 +1,4 @@
-     ////////////OBJECT CLIENT////////////
+     ////////////OBJECT ENGINE////////////
     //*********************************//
    //         Gomez Pablo Matias      //
   //         July 2013               //
@@ -22,7 +22,7 @@ var Engine = function() {
     
     var getRandomName = function(){
         nameNumber++;
-        return ("pgBot" + nameNumber);
+        return ("PabloGomezBot" + nameNumber);
     }
     
     var getRandomNumber = function(){
@@ -155,27 +155,28 @@ var Engine = function() {
     
     var selectUser = function(players){
         var oponent = '';
-        var previousPossibleUser = '';
         
-        //Cargo lista (ordenada por score de mayor a menor asi elijo al segundo mayor !): (TECNICA: EL PRIMERO QUE PUEDA DE LOS MENORES LO SALTEO PORQUE SEGURO LO ESTAN ADIVINANDO LAS DEMAS PERSONAS)       
-        players.sort(function (a, b){ return ((a['score'] > b['score'] ) ? -1 : ((a['score'] < b['score']) ? 1 : 0)); });
-        skipped = false;
-        $.each(players, function(index, value){ 
-            if (value['numberActivated'] == true){
-                if (knowNumber(value['numberId'])){  //Con esto verifico si hay alguno al que ya le conosco el numero
-                    oponent = value['publicUuid'];
-                    return;
-                } 
-                if (oponent == '') {
-                    if (!skipped){
-                        skipped = true;
-                        previousPossibleUser = value['publicUuid'];
-                    }
-                    else oponent = value['publicUuid'];
+        //Saco de la lista los que no tienen numero activo:
+        var player;
+        for (var index=0; index<players.length; index++){
+            player = players[index];
+            if (player['numberActivated'] == true) {
+                if (knowNumber(player['numberId'])){  //Con esto verifico si hay alguno al que ya le conosco el numero
+                    oponent = player['publicUuid'];
+                    break;
                 }
             }
-        });
-        if (oponent == '' && previousPossibleUser != '') oponent = previousPossibleUser;
+            else{ //Si no tiene numero lo quito de la lista
+                players.splice(index,1);  //Borro dicho elemento ya que si alguna vez lo habia encontrado, es imposible que sea este
+                index--;
+            }
+        }
+                
+        //Elijo mediante random al user:
+        if (players.length > 0){
+            player = players[Math.floor(Math.random() * players.length)];
+            oponent = player['publicUuid'];
+        }
         
         return oponent;
     }

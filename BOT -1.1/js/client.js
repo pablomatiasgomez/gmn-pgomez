@@ -38,9 +38,7 @@ var Client = function(server, engine) {
     ERRCODE_GUESSING_OWN_NUMBER = 529;
     
     REFRESH_INTERVAL = 1500;
-    
-    LISTS_MAX_LENGTH = 200;
-    
+
     var getPrivateID = function() {
         return privateID;
     }
@@ -61,7 +59,6 @@ var Client = function(server, engine) {
     }
 
     var writeLog = function(text){
-        if ($("#tblInfo tbody tr").length > LISTS_MAX_LENGTH)  $("#tblInfo tbody tr:last-child").remove();
         $("#tblInfo tbody").prepend("<tr><td>" + text + "</td></tr>");
         console.log(text);
     }
@@ -186,7 +183,6 @@ var Client = function(server, engine) {
                         setInterval(data['timeToNextAttemp']);// Guardo intervalo para no ejercutar el proximo antes.
                         oEngine.addTry(data['numberId'], data['number'], data['correctChars'], data['existingChars'], data['wrongChars']);
                         
-                        if ($("#tblAttempts tbody tr").length > LISTS_MAX_LENGTH)  $("#tblAttempts tbody tr:last-child").remove();
                         tr_html = " <tr> <td><div class='numberColor'></div></td> <td>"  + data['number'] + "</td> <td>" + data['correctChars'] + "</td> <td>" + data['existingChars'] + "</td> <td>" + data['wrongChars'] + "</td> </tr>";
                         $("#tblAttempts tbody").prepend(tr_html).hide().fadeIn(ANIMATE_FAST);
                         colorFormats = ['dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset', 'inherit'];
@@ -201,7 +197,7 @@ var Client = function(server, engine) {
                             guessingToID = '';
                             $("#tblAttempts tbody tr:first-child").css({ 'background-color': '#00FF00'});
                         } 
-                        setTimeout(botProcess, timeToWait());
+                        setTimeout(botProcess, timeToWait() - 300);
                     }
                     else solveErrors(data);
                 });

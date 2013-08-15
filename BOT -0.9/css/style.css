@@ -131,7 +131,7 @@ table {
     margin:  0 auto;
     height: auto;
     padding: 10px 20px;
-    width: 1000px;
+    width: 1200px;
 }
 
     .initForm {
@@ -163,7 +163,7 @@ table {
         }
 
 #divMain {
-    margin: 0px 100px;
+    margin: 0px;
     overflow: hidden;
     display: none;
 } 

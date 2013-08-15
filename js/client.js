@@ -124,7 +124,7 @@ var Client = function(server) {
             }
             else {
                 $("#divNumber .result").slideUp(ANIMATE_FAST);
-                oServer.setNumber(oClient.getPrivateID(), value, function(data) {
+                oServer.setNumber(privateID, value, function(data) {
                     if (data.status === CODE_STATUS_OK){
                         data = data.responseJSON;
 

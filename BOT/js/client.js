@@ -63,7 +63,7 @@ var Client = function(server, engine) {
     var writeLog = function(text){
         if ($("#tblInfo tbody tr").length > LISTS_MAX_LENGTH)  $("#tblInfo tbody tr:last-child").remove();
         $("#tblInfo tbody").prepend("<tr><td>" + text + "</td></tr>");
-        console.log(text);
+        //console.log(text);
     }
     var setServer = function(IP, PORT){
         writeLog("Intento server:" + IP + ":" + PORT);

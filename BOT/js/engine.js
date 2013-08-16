@@ -88,7 +88,6 @@ var Engine = function() {
             }
         });
 
-        $("li#possibleNums").html("<u>Posibles</u>: " + possibleNums.length.toString());
         return possibleNums;
     }
     

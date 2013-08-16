@@ -97,7 +97,7 @@ var Engine = function() {
     }
     
     var getNumberToGuess = function(numberID){
-        //return Math.random().toString().substr(2,4); // Numero random para probar
+        //return Math.random().toString().substr(2, NUM_LENGTH); // Numero random para probar
         var numReturn;
         
         if (typeof numbers[numberID] === 'string'){
@@ -112,7 +112,7 @@ var Engine = function() {
             //if (triesMade == 1)  numReturn = '2581';
             //if (triesMade == 2)  numReturn = '3692';
             
-            if (triesMade == 0)  numReturn = Math.random().toString().substr(2,NUM_LENGTH);;
+            if (triesMade == 0)  numReturn = Math.random().toString().substr(2, NUM_LENGTH);
             if (triesMade > 0)  numReturn = selectNumFromArray(makeArray(numbers[numberID]));
         }
         return numReturn;

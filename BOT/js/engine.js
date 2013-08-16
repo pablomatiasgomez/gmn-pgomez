@@ -10,11 +10,15 @@ var Engine = function() {
     var nameNumber = 0;
     var numbersSetted = [];
     var numbers = {}; 
+
+    //CONST:
+    NUM_LENGTH = 4;
+    BOT_NAME = "pGomezBot";
     
     var repeatedNumbers = function(number){
         var repeated = false;
         number = number.toString();
-        for (var i=0; i<4; i++){
+        for (var i=0; i<NUM_LENGTH; i++){
             if (number.indexOf(number.substring(i,i+1),i+1) > 0) repeated = true;
         }
         return repeated;
@@ -22,13 +26,13 @@ var Engine = function() {
     
     var getRandomName = function(){
         nameNumber++;
-        return ("pGomezBot" + nameNumber);
+        return (BOT_NAME + nameNumber.toString());
     }
     
     var getRandomNumber = function(){
-        var random = Math.random().toString().substr(5,4);
+        var random = Math.random().toString().substr(5, NUM_LENGTH);
         while (numbersSetted.indexOf(random) != -1 || repeatedNumbers(random)){
-            random = Math.random().toString().substr(5,4);
+            random = Math.random().toString().substr(5, NUM_LENGTH);
         }
         return random;
     }
@@ -95,7 +99,7 @@ var Engine = function() {
     
     var getNumberToGuess = function(numberID){
         //return Math.random().toString().substr(2,4); // Numero random para probar
-        var numReturn = '0000';
+        var numReturn;
         
         if (typeof numbers[numberID] === 'string'){
             numReturn = numbers[numberID].toString();
@@ -109,7 +113,7 @@ var Engine = function() {
             //if (triesMade == 1)  numReturn = '2581';
             //if (triesMade == 2)  numReturn = '3692';
             
-            if (triesMade == 0)  numReturn = Math.random().toString().substr(2,4);;
+            if (triesMade == 0)  numReturn = Math.random().toString().substr(2,NUM_LENGTH);;
             if (triesMade > 0)  numReturn = selectNumFromArray(makeArray(numbers[numberID]));
         }
         return numReturn;
@@ -143,6 +147,7 @@ var Engine = function() {
         return oponent;
     }
     var addTry = function(numberId, number, correctChars, existingChars, wrongChars){
+        var adivino = false;
         if (numbers[numberId] === undefined) numbers[numberId] = [];
         if (typeof numbers[numberId] != 'string'){
             numbers[numberId].push({
@@ -152,9 +157,11 @@ var Engine = function() {
                 "wrongChars": wrongChars
             });
         }
-        if (correctChars == 4){ // Adivne el numero !!
+        if (correctChars == NUM_LENGTH){ // Adivne el numero !!
             numbers[numberId] = number.toString();
+            adivino = true;
         }   
+        return adivino;
     }
 
     var knowNumber = function(numberID){

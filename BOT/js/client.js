@@ -180,8 +180,8 @@ var Client = function(server, engine) {
                         
                         writeLog("Intento numero: " + data['number']);
                         setInterval(data['timeToNextAttemp']);// Guardo intervalo para no ejercutar el proximo antes.
-                        oEngine.addTry(data['numberId'], data['number'], data['correctChars'], data['existingChars'], data['wrongChars']);
                         
+                        //Agrego con estilos a la tabla de intentos:
                         if ($("#tblAttempts tbody tr").length > LISTS_MAX_LENGTH)  $("#tblAttempts tbody tr:last-child").remove();
                         tr_html = " <tr> <td><div class='numberColor'></div></td> <td>"  + data['number'] + "</td> <td>" + data['correctChars'] + "</td> <td>" + data['existingChars'] + "</td> <td>" + data['wrongChars'] + "</td> </tr>";
                         $("#tblAttempts tbody").prepend(tr_html).hide().fadeIn(ANIMATE_FAST);
@@ -192,11 +192,13 @@ var Client = function(server, engine) {
                         $("#tblAttempts tbody tr:first-child .numberColor").css({'border-style': colorFormats[parseInt(num)], 'border-color': '#' + hexCode.substr(0,6) + ' #' + hexCode.substr(6,6) + ' #' + hexCode.substr(12,6) + ' #' + hexCode.substr(18,6)});
                         $("#tblAttempts tbody tr:first-child .numberColor").attr('title', data['numberId']);
                         
-                        if (data['correctChars'] == 4) {
+                        if (oEngine.addTry(data['numberId'], data['number'], data['correctChars'], data['existingChars'], data['wrongChars']) == true){
+                            //Adivine numero:
                             writeLog("Adivine numero!!!!");
                             guessingToID = '';
                             $("#tblAttempts tbody tr:first-child").css({ 'background-color': '#00FF00'});
-                        } 
+                        }
+                        
                         setTimeout(botProcess, timeToWait() - 100);
                     }
                     else solveErrors(data);

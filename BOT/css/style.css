@@ -163,17 +163,17 @@ table {
         }
 
 #divMain {
-    margin: 0px 100px;
+    margin: 0px 150px;
     overflow: hidden;
     display: none;
 } 
     #divMain .numberColor {
         border-color: yellow green blue red;
         border-style:solid;
-        border-width:5px;
+        border-width:7px;
         width:0;
         height:0;
-        margin: 2px 2px 2px 26px;
+        margin: 1px 2px 1px 26px;
         box-shadow: 0 0 3px 4px #FFFFFF;
     }
 

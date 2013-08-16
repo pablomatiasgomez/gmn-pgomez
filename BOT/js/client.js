@@ -197,7 +197,7 @@ var Client = function(server, engine) {
                             guessingToID = '';
                             $("#tblAttempts tbody tr:first-child").css({ 'background-color': '#00FF00'});
                         } 
-                        setTimeout(botProcess, timeToWait());
+                        setTimeout(botProcess, timeToWait() - 100);
                     }
                     else solveErrors(data);
                 });

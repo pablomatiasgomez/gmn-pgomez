@@ -127,6 +127,16 @@ table {
             margin: -3px;
         }   
     
+#divAjaxLoading {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    display: none;
+}
+
+    #divAjaxLoading img{
+        width: 100px;
+    }
 
 #container {
     margin:  0 auto;

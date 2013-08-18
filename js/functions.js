@@ -8,7 +8,7 @@
 KEY_ENTER = 13;
 
 $(function(){ //ready function 
-    oServer = Server();
+    oServer = Server("divAjaxLoading");
     oClient = Client(oServer);
     
     $("#divServer").show();

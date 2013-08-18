@@ -10,6 +10,9 @@ var Server = function(divAjaxLoaderID) {
     var url = "";
     var divAjaxLoader = $("#" + divAjaxLoaderID);
     
+    //const:
+    DEFAULT_PORT = 80;
+    
     var getData = function(subUrl, callback) {
         divAjaxLoader.show();
         $.ajax({
@@ -26,11 +29,11 @@ var Server = function(divAjaxLoaderID) {
     var tryServer = function(IP, PORT, callback){
         $.ajax({
             type: 'GET',
-            url: "http://" + IP + ((parseInt(PORT) === 80) ? '' : ':' + PORT) + "/version",
+            url: "http://" + IP + ((parseInt(PORT) === DEFAULT_PORT) ? '' : ':' + PORT) + "/version",
             dataType:"json",
             success: function(data){
                 if (data['version']) {
-                    url = "http://" +  IP + ((parseInt(PORT) === 80) ? '' : ':' + PORT) + "/"; //Guardo datos del servidor
+                    url = "http://" +  IP + ((parseInt(PORT) === DEFAULT_PORT) ? '' : ':' + PORT) + "/"; //Guardo datos del servidor
                     callback(true)
                 }
                 else callback(false);

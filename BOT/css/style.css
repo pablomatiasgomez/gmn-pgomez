@@ -67,6 +67,7 @@ table {
     }
 
 
+
 #divData{
     overflow: hidden; 
     position:absolute; 
@@ -126,12 +127,22 @@ table {
             margin: -3px;
         }   
     
+#divAjaxLoading {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    display: none;
+}
 
+    #divAjaxLoading img{
+        width: 100px;
+    }
+    
 #container {
     margin:  0 auto;
+    width: 1000px;
     height: auto;
     padding: 10px 20px;
-    width: 1000px;
 }
 
     .initForm {
@@ -163,7 +174,7 @@ table {
         }
 
 #divMain {
-    margin: 0px 150px;
+    margin: 0px 110px;
     overflow: hidden;
     display: none;
 } 
@@ -180,7 +191,7 @@ table {
     #tblAttempts {
         border-collapse:collapse;
         border: 1px solid black;
-        width: 300px;
+        width: 350px;
         margin: 5px;
         padding: 5px;
         font-size: 13px;
@@ -195,7 +206,7 @@ table {
     #tblInfo {
         border-collapse:collapse;
         border: 1px solid black;
-        width: 300px;
+        width: 350px;
         margin: 5px;
         padding: 5px;
         font-size: 13px;
@@ -206,31 +217,3 @@ table {
             text-align: center;
         }
         
-        /*
-    #divPlayers {
-        float: right;
-        width: 300px;
-        margin-top: -55px;
-    }
-        #divPlayers #btnRefreshLobby {
-            float: right;
-            margin-top: -40px;
-            margin-right: 20px;
-        }
-        
-        #tblPlayers   {
-            border-collapse: collapse;
-            border: 2px dashed;
-            width: 95%;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            background: rgba(200, 230, 180, 0.6);
-        }
-            #tblPlayers button img {
-                margin: -2px;
-            }
-        
-            #tblPlayers td, #tblPlayers th{
-                border: 1px solid black;
-                text-align: center;
-            }*/

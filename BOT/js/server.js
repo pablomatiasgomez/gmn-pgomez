@@ -5,20 +5,22 @@
  //*********************************//
 /////////////////////////////////////
 
-var Server = function() {
+var Server = function(divAjaxLoaderID) {
     //variables privadas
     var url = "";
-
+    var divAjaxLoader = $("#" + divAjaxLoaderID);
+    
     //const:
     DEFAULT_PORT = 80;
 
     var getData = function(subUrl, callback) {
-
+        divAjaxLoader.show();
         $.ajax({
             type: 'GET',
             url: url + subUrl,
             dataType:"json",
             complete: function(data) {
+                divAjaxLoader.hide();
                 callback(data);
             }
         });

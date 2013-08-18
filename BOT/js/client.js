@@ -60,9 +60,10 @@ var Client = function(server, engine) {
         return (nextAttempt - now);   
     }
 
-    var writeLog = function(text){
+    var writeLog = function(text, err = false){
         if ($("#tblInfo tbody tr").length > LISTS_MAX_LENGTH)  $("#tblInfo tbody tr:last-child").remove();
         $("#tblInfo tbody").prepend("<tr><td>" + text + "</td></tr>");
+        if (err) {  $("#tblInfo tbody tr:first-child").css({'background-color': '#FF2222' }) };
         //console.log(text);
     }
     var setServer = function(IP, PORT){
@@ -246,45 +247,45 @@ var Client = function(server, engine) {
         
         switch (errorNumber){
             case ERRCODE_PRIVATE_UUID_NOT_FOUND: //Private Uuid not found
-                writeLog("ERRCODE_PRIVATE_UUID_NOT_FOUND");
+                writeLog("ERR: UUID PRIVADO NO ENCONTRADO", true);
                 name = '';
                 break;
                        
             case ERRCODE_PUBLIC_UUID_NOT_FOUND: //Public UUID is was not found.
-                writeLog("ERRCODE_PUBLIC_UUID_NOT_FOUND");
+                writeLog("ERR: UUID PUBLICO NO ENCONTRADO", true);
                 guessingToID = '';
                 break;
                 
             case ERRCODE_GUESSING_OWN_NUMBER: //User tries to guess his own number.
-                writeLog("ERRCODE_GUESSING_OWN_NUMBER");
+                writeLog("ERR: INTENTE ADIVINAR MI PROPIO NUMERO", true);
                 guessingToID = ''; // Actualizo toda la board porque algo surgio mal
                 break;
                 
             case ERRCODE_PUBLIC_UUID_NO_ACTIVE_NUMBER: //Public UUID has no active number.
-                writeLog("ERRCODE_PUBLIC_UUID_NO_ACTIVE_NUMBER");
+                writeLog("ERR: UUID PUBLICO NO TIENE NUMERO ACTIVO", true);
                 guessingToID = '';
                 break;
                 
             case ERRCODE_INVALID_NUMBER: // Invalid number
-                writeLog("ERRCODE_INVALID_NUMBER");
+                writeLog("ERR: NUMERO INVALIDO", true);
                 number = '';
                 break;
                 
             case ERRCODE_INTERVAL_NOT_EXPIRED: //Minimum interval between attempts was not expired.
-                writeLog("ERRCODE_INTERVAL_NOT_EXPIRED");
+                writeLog("ERR: NO SE ESPERO EL TIEMPO DE ESPERA", true);
                 setInterval(data['timeToNextAttemp']);
                 break;
                 
             case ERRCODE_ALREADY_HAS_NUMBER: // Already active number
-                writeLog("ERRCODE_ALREADY_HAS_NUMBER");
+                writeLog("ERR: YA TENES NUMERO ACTIVO", true);
                 break;
                 
             case ERRCODE_USER_ALREADY_REGISTERED: // Nombre de usuario ya existente
-                writeLog("ERRCODE_USER_ALREADY_REGISTERED");
+                writeLog("ERR: NOMBRE DE USUARIO YA EXISTENTE", true);
                 break;
                 
             case ERRCODE_PRIVATE_UUID_NO_ACTIVE_NUMBER: //Private UUID has no active number.
-                writeLog("ERRCODE_PRIVATE_UUID_NO_ACTIVE_NUMBER");
+                writeLog("ERR: UUID PRIVADO NO TIENE NUMERO ACTIVO", true);
                 number = '';
                 break;
                 

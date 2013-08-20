@@ -60,7 +60,8 @@ var Client = function(server, engine) {
         return (nextAttempt - now);   
     }
 
-    var writeLog = function(text, err = false){
+    var writeLog = function(text, err){
+        err = err || false;
         if ($("#tblInfo tbody tr").length > LISTS_MAX_LENGTH)  $("#tblInfo tbody tr:last-child").remove();
         $("#tblInfo tbody").prepend("<tr><td>" + text + "</td></tr>");
         if (err) {  $("#tblInfo tbody tr:first-child").css({'background-color': '#FF2222' }) };
